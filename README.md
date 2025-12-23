@@ -1,6 +1,6 @@
 # NYA Core Assets
 
-Official plugins and language files for **NYA Core** (formerly HitTracker) - A no-hit run tracker for Souls games.
+Official plugins and language files for **NYA Core** - A no-hit run tracker for Souls games.
 
 ## 📁 Repository Structure
 
