@@ -1,56 +1,64 @@
 {
-  "version": "2.1.0",
+  "version": "2.1.1",
   "last_updated": "2025-12-23",
-  "compatible_app_versions": ["2.0.0", "2.0.1", "2.0.2", "2.1.0"],
+  "compatible_app_versions": ["2.0.0", "2.0.1", "2.0.2", "2.1.0", "2.1.1"],
   "repository": "https://github.com/valkyaha/NYA-Core-Assets",
   "plugins": [
     {
       "id": "ac6",
       "name": "Armored Core VI",
       "version": "1.0.0",
-      "path": "plugins/ac6/plugin.toml"
+      "path": "plugins/ac6/plugin.toml",
+      "tool_count": 1
     },
     {
       "id": "bb",
       "name": "Bloodborne",
       "version": "1.0.0",
-      "path": "plugins/bb/plugin.toml"
+      "path": "plugins/bb/plugin.toml",
+      "tool_count": 2
     },
     {
       "id": "des",
       "name": "Demon's Souls",
       "version": "1.0.0",
-      "path": "plugins/des/plugin.toml"
+      "path": "plugins/des/plugin.toml",
+      "tool_count": 2
     },
     {
       "id": "ds1",
       "name": "Dark Souls",
       "version": "1.0.0",
-      "path": "plugins/ds1/plugin.toml"
+      "path": "plugins/ds1/plugin.toml",
+      "tool_count": 3
     },
     {
       "id": "ds2",
       "name": "Dark Souls II",
       "version": "1.0.0",
-      "path": "plugins/ds2/plugin.toml"
+      "path": "plugins/ds2/plugin.toml",
+      "tool_count": 2
     },
     {
       "id": "ds3",
       "name": "Dark Souls III",
       "version": "1.0.0",
-      "path": "plugins/ds3/plugin.toml"
+      "path": "plugins/ds3/plugin.toml",
+      "tool_count": 3
     },
     {
       "id": "eldenring",
       "name": "Elden Ring",
       "version": "1.0.0",
-      "path": "plugins/eldenring/plugin.toml"
+      "path": "plugins/eldenring/plugin.toml",
+      "tool_count": 2
     },
     {
       "id": "sekiro",
       "name": "Sekiro: Shadows Die Twice",
       "version": "1.0.0",
-      "path": "plugins/sekiro/plugin.toml"
+      "path": "plugins/sekiro/plugin.toml",
+      "tool_count": 3
     }
   ],
   "languages": [

@@ -5,10 +5,42 @@ short_name = "DS1"
 version = "1.0.0"
 author = "NYA Core"
 description = "Dark Souls Remastered and Prepare to Die Edition autosplitter with full boss tracking"
+update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ds1/plugin.toml"
 
 [process]
 # Supports both Remastered (64-bit) and PTDE (32-bit)
 names = ["DARK SOULS REMASTERED.exe", "DarkSoulsRemastered.exe", "darksouls.exe", "DARKSOULS.exe"]
+
+# =============================================================================
+# RECOMMENDED TOOLS
+# =============================================================================
+
+[[tools]]
+name = "DS1 Connection Manager"
+description = "Manage online/offline mode for practice"
+author = "Community"
+version = "1.0.0"
+download_url = "https://github.com/search?q=dark+souls+connection+manager"
+category = "utility"
+required = false
+
+[[tools]]
+name = "PvP Watchdog"
+description = "Anti-cheat and connection manager for DS1"
+author = "LukeYui"
+version = "1.4.2"
+download_url = "https://www.nexusmods.com/darksouls/mods/849"
+category = "utility"
+required = false
+
+[[tools]]
+name = "DSFix (PTDE only)"
+description = "Essential mod for Prepare to Die Edition"
+author = "Durante"
+version = "2.4"
+download_url = "https://www.nexusmods.com/darksouls/mods/19"
+category = "mod"
+required = false
 
 [autosplitter]
 enabled = true

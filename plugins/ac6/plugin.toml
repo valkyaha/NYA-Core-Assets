@@ -5,9 +5,23 @@ short_name = "AC6"
 version = "1.0.0"
 author = "NYA Core"
 description = "Armored Core VI autosplitter with mission tracking"
+update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ac6/plugin.toml"
 
 [process]
 names = ["armoredcore6.exe"]
+
+# =============================================================================
+# RECOMMENDED TOOLS
+# =============================================================================
+
+[[tools]]
+name = "AC6 Save Manager"
+description = "Backup and manage save files for Armored Core VI"
+author = "Community"
+version = "1.0.0"
+download_url = "https://github.com/search?q=armored+core+6+save+manager"
+category = "utility"
+required = false
 
 [autosplitter]
 enabled = true
