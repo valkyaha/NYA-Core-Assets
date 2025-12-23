@@ -1,0 +1,348 @@
+[plugin]
+id = "ds3"
+name = "Dark Souls III"
+short_name = "DS3"
+version = "1.0.0"
+author = "NYA Core"
+description = "Dark Souls III autosplitter with full boss tracking"
+
+[process]
+names = ["DarkSoulsIII.exe"]
+
+[autosplitter]
+enabled = true
+algorithm = "category_decomposition"
+
+# Category decomposition algorithm configuration (DS3 style)
+# Based on SoulSplitter by FrankvdStam
+[autosplitter.category_config]
+primary_pattern = "sprj_event_flag_man"
+secondary_pattern = "field_area"
+base_offset = 536           # 0x218
+entry_size = 24             # 0x18
+category_count = 6
+category_multiplier = 168   # 0xa8
+# DS3 uses two-step pointer chain: FieldArea -> 0x0 -> 0x10
+field_area_base_offset = 0
+world_info_offset = 16      # 0x10
+world_info_struct_size = 56 # 0x38
+world_block_struct_size = 112  # 0x70
+
+# Memory patterns for finding game data structures (from SoulSplitter)
+[[autosplitter.patterns]]
+name = "sprj_event_flag_man"
+pattern = "48 c7 05 ? ? ? ? 00 00 00 00 48 8b 7c 24 38 c7 46 54 ff ff ff ff 48 83 c4 20 5e c3"
+rip_offset = 3
+instruction_len = 11
+
+[[autosplitter.patterns]]
+name = "field_area"
+pattern = "4c 8b 3d ? ? ? ? 8b 45 87 83 f8 ff 74 69 48 8d 4d 8f 48 89 4d 9f 89 45 8f 48 8d 55 8f 49 8b 4f 10"
+rip_offset = 3
+instruction_len = 7
+
+# =============================================================================
+# MAIN GAME BOSSES
+# =============================================================================
+
+[[bosses]]
+id = "iudex_gundyr"
+name = "Iudex Gundyr"
+location = "Cemetery of Ash"
+required = true
+is_dlc = false
+flag_id = 14000800
+order = 1
+aliases = ["Gundyr", "Tutorial Boss"]
+
+[[bosses]]
+id = "vordt"
+name = "Vordt of the Boreal Valley"
+location = "High Wall of Lothric"
+required = true
+is_dlc = false
+flag_id = 13000800
+order = 2
+aliases = ["Vordt", "Ice Dog"]
+
+[[bosses]]
+id = "curse_rotted_greatwood"
+name = "Curse-Rotted Greatwood"
+location = "Undead Settlement"
+required = false
+is_dlc = false
+flag_id = 13100800
+order = 3
+aliases = ["Greatwood", "Tree", "Ballsack Tree"]
+
+[[bosses]]
+id = "crystal_sage"
+name = "Crystal Sage"
+location = "Road of Sacrifices"
+required = true
+is_dlc = false
+flag_id = 13300850
+order = 4
+aliases = ["Sage", "Crystal"]
+
+[[bosses]]
+id = "deacons"
+name = "Deacons of the Deep"
+location = "Cathedral of the Deep"
+required = true
+is_dlc = false
+flag_id = 13500800
+order = 5
+aliases = ["Deacons"]
+
+[[bosses]]
+id = "abyss_watchers"
+name = "Abyss Watchers"
+location = "Farron Keep"
+required = true
+is_dlc = false
+flag_id = 13300800
+order = 6
+aliases = ["Watchers", "Abyss"]
+
+[[bosses]]
+id = "high_lord_wolnir"
+name = "High Lord Wolnir"
+location = "Catacombs of Carthus"
+required = true
+is_dlc = false
+flag_id = 13800800
+order = 7
+aliases = ["Wolnir", "Skeleton"]
+
+[[bosses]]
+id = "old_demon_king"
+name = "Old Demon King"
+location = "Smouldering Lake"
+required = false
+is_dlc = false
+flag_id = 13800830
+order = 8
+aliases = ["ODK", "Demon King"]
+
+[[bosses]]
+id = "pontiff"
+name = "Pontiff Sulyvahn"
+location = "Irithyll of the Boreal Valley"
+required = true
+is_dlc = false
+flag_id = 13700850
+order = 9
+aliases = ["Pontiff", "Sully", "Sulyvahn"]
+
+[[bosses]]
+id = "yhorm"
+name = "Yhorm the Giant"
+location = "Profaned Capital"
+required = true
+is_dlc = false
+flag_id = 13900800
+order = 10
+aliases = ["Yhorm"]
+
+[[bosses]]
+id = "aldrich"
+name = "Aldrich, Devourer of Gods"
+location = "Anor Londo"
+required = true
+is_dlc = false
+flag_id = 13700800
+order = 11
+aliases = ["Aldrich", "Gwyndolin Eater"]
+
+[[bosses]]
+id = "dancer"
+name = "Dancer of the Boreal Valley"
+location = "High Wall of Lothric"
+required = true
+is_dlc = false
+flag_id = 13000890
+order = 12
+aliases = ["Dancer"]
+
+[[bosses]]
+id = "oceiros"
+name = "Oceiros, the Consumed King"
+location = "Consumed King's Garden"
+required = false
+is_dlc = false
+flag_id = 13000830
+order = 13
+aliases = ["Oceiros", "Baby Killer"]
+
+[[bosses]]
+id = "champion_gundyr"
+name = "Champion Gundyr"
+location = "Untended Graves"
+required = false
+is_dlc = false
+flag_id = 14000830
+order = 14
+aliases = ["Champ Gundyr", "Champion"]
+
+[[bosses]]
+id = "dragonslayer_armour"
+name = "Dragonslayer Armour"
+location = "Lothric Castle"
+required = true
+is_dlc = false
+flag_id = 13010800
+order = 15
+aliases = ["DSA", "Armour", "Armor"]
+
+[[bosses]]
+id = "twin_princes"
+name = "Twin Princes"
+location = "Grand Archives"
+required = true
+is_dlc = false
+flag_id = 13410830
+order = 16
+aliases = ["Princes", "Lorian", "Lothric"]
+
+[[bosses]]
+id = "ancient_wyvern"
+name = "Ancient Wyvern"
+location = "Archdragon Peak"
+required = false
+is_dlc = false
+flag_id = 13200800
+order = 17
+aliases = ["Wyvern", "Plunge Boss"]
+
+[[bosses]]
+id = "nameless_king"
+name = "Nameless King"
+location = "Archdragon Peak"
+required = false
+is_dlc = false
+flag_id = 13200850
+order = 18
+aliases = ["NK", "Nameless"]
+
+[[bosses]]
+id = "soul_of_cinder"
+name = "Soul of Cinder"
+location = "Kiln of the First Flame"
+required = true
+is_dlc = false
+flag_id = 14100800
+order = 19
+aliases = ["SoC", "Cinder", "Final Boss"]
+
+# =============================================================================
+# ASHES OF ARIANDEL DLC
+# =============================================================================
+
+[[bosses]]
+id = "champion_gravetender"
+name = "Champion's Gravetender & Gravetender Greatwolf"
+location = "Painted World of Ariandel"
+required = true
+is_dlc = true
+dlc_name = "Ashes of Ariandel"
+flag_id = 14500860
+order = 20
+aliases = ["Gravetender", "Wolf"]
+
+[[bosses]]
+id = "sister_friede"
+name = "Sister Friede"
+location = "Painted World of Ariandel"
+required = true
+is_dlc = true
+dlc_name = "Ashes of Ariandel"
+flag_id = 14500800
+order = 21
+aliases = ["Friede", "Blackflame Friede"]
+
+# =============================================================================
+# THE RINGED CITY DLC
+# =============================================================================
+
+[[bosses]]
+id = "demon_prince"
+name = "Demon in Pain & Demon from Below / Demon Prince"
+location = "The Dreg Heap"
+required = true
+is_dlc = true
+dlc_name = "The Ringed City"
+flag_id = 15000800
+order = 22
+aliases = ["Demon Prince", "Demons"]
+
+[[bosses]]
+id = "halflight"
+name = "Halflight, Spear of the Church"
+location = "The Ringed City"
+required = true
+is_dlc = true
+dlc_name = "The Ringed City"
+flag_id = 15100800
+order = 23
+aliases = ["Halflight", "Spear"]
+
+[[bosses]]
+id = "darkeater_midir"
+name = "Darkeater Midir"
+location = "The Ringed City"
+required = true
+is_dlc = true
+dlc_name = "The Ringed City"
+flag_id = 15100850
+order = 24
+aliases = ["Midir"]
+
+[[bosses]]
+id = "slave_knight_gael"
+name = "Slave Knight Gael"
+location = "The Ringed City"
+required = true
+is_dlc = true
+dlc_name = "The Ringed City"
+flag_id = 15110800
+order = 25
+aliases = ["Gael", "Uncle Gael"]
+
+# =============================================================================
+# PRESETS
+# =============================================================================
+
+[[presets]]
+id = "all-bosses"
+name = "All Bosses"
+description = "All main game bosses (19 bosses)"
+boss_ids = [
+    "iudex_gundyr", "vordt", "curse_rotted_greatwood", "crystal_sage", "deacons",
+    "abyss_watchers", "high_lord_wolnir", "old_demon_king", "pontiff", "yhorm",
+    "aldrich", "dancer", "oceiros", "champion_gundyr", "dragonslayer_armour",
+    "twin_princes", "ancient_wyvern", "nameless_king", "soul_of_cinder"
+]
+
+[[presets]]
+id = "all-bosses-dlc"
+name = "All Bosses + DLC"
+description = "All bosses including DLC (25 bosses)"
+boss_ids = [
+    "iudex_gundyr", "vordt", "curse_rotted_greatwood", "crystal_sage", "deacons",
+    "abyss_watchers", "high_lord_wolnir", "old_demon_king", "pontiff", "yhorm",
+    "aldrich", "dancer", "oceiros", "champion_gundyr", "dragonslayer_armour",
+    "twin_princes", "ancient_wyvern", "nameless_king", "soul_of_cinder",
+    "champion_gravetender", "sister_friede", "demon_prince", "halflight",
+    "darkeater_midir", "slave_knight_gael"
+]
+
+[[presets]]
+id = "any-percent"
+name = "Any%"
+description = "Required bosses only (13 bosses)"
+boss_ids = [
+    "iudex_gundyr", "vordt", "crystal_sage", "deacons", "abyss_watchers",
+    "high_lord_wolnir", "pontiff", "yhorm", "aldrich", "dancer",
+    "dragonslayer_armour", "twin_princes", "soul_of_cinder"
+]

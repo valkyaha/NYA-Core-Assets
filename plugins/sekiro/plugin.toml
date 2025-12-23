@@ -1,0 +1,247 @@
+[plugin]
+id = "sekiro"
+name = "Sekiro: Shadows Die Twice"
+short_name = "SEK"
+version = "1.0.0"
+author = "NYA Core"
+description = "Sekiro autosplitter with full boss tracking"
+
+[process]
+names = ["sekiro.exe"]
+
+[autosplitter]
+enabled = true
+algorithm = "category_decomposition"
+
+# Category decomposition algorithm configuration (Sekiro style)
+# Based on SoulSplitter by FrankvdStam
+# Sekiro uses different offsets than DS3
+[autosplitter.category_config]
+primary_pattern = "event_flag_man"
+secondary_pattern = "field_area"
+base_offset = 536           # 0x218
+entry_size = 24             # 0x18
+category_count = 6
+category_multiplier = 168   # 0xa8
+# Sekiro: FieldArea -> 0x48 -> 0x18
+field_area_base_offset = 72 # 0x48
+world_info_offset = 24      # 0x18
+world_info_struct_size = 56 # 0x38
+world_block_struct_size = 176  # 0xb0
+
+# Memory patterns for finding game data structures
+[[autosplitter.patterns]]
+name = "event_flag_man"
+pattern = "48 8b 0d ? ? ? ? 48 89 5c 24 50 48 89 6c 24 58 48 89 74 24 60"
+rip_offset = 3
+instruction_len = 7
+
+[[autosplitter.patterns]]
+name = "field_area"
+pattern = "48 8b 0d ? ? ? ? 48 85 c9 74 26 44 8b 41 28 48 8d 54 24 40"
+rip_offset = 3
+instruction_len = 7
+
+# =============================================================================
+# LIVESPLIT-STYLE SCRIPT CONFIGURATION
+# =============================================================================
+
+[script]
+version = "1.0"
+name = "Sekiro Script"
+description = "LiveSplit-style autosplitter script for Sekiro: Shadows Die Twice"
+
+[script.state.eventFlagMan]
+type = "ptr"
+pattern = "48 8b 0d ?? ?? ?? ?? 48 89 5c 24 50 48 89 6c 24 58 48 89 74 24 60"
+pattern_offset = 3
+pattern_length = 7
+
+[script.state.inGame]
+type = "bool"
+base_watcher = "eventFlagMan"
+offsets = [0x0]
+
+[script.hooks]
+start = "settings.autostart && current.inGame && !old.inGame"
+reset = "settings.autoreset && !current.inGame && old.inGame"
+split = "settings.splitOnDeath && current.playerHP == 0 && old.playerHP > 0"
+
+[script.settings]
+autostart = { default = true, label = "Auto-start timer", description = "Start timer when entering a new game" }
+autoreset = { default = false, label = "Auto-reset on menu", description = "Reset timer when returning to main menu" }
+splitOnDeath = { default = false, label = "Split on death", description = "Trigger split when player dies" }
+
+# =============================================================================
+# BOSSES
+# =============================================================================
+
+# Main Game Bosses
+[[bosses]]
+id = "gyoubu"
+name = "Gyoubu Masataka Oniwa"
+location = "Ashina Outskirts"
+required = true
+is_dlc = false
+flag_id = 9301
+order = 1
+aliases = ["Gyoubu Oniwa"]
+
+[[bosses]]
+id = "lady_butterfly"
+name = "Lady Butterfly"
+location = "Hirata Estate"
+required = false
+is_dlc = false
+flag_id = 9302
+order = 2
+
+[[bosses]]
+id = "genichiro"
+name = "Genichiro Ashina"
+location = "Ashina Castle"
+required = true
+is_dlc = false
+flag_id = 9303
+order = 3
+
+[[bosses]]
+id = "guardian_ape"
+name = "Guardian Ape"
+location = "Sunken Valley"
+required = true
+is_dlc = false
+flag_id = 9304
+order = 4
+
+[[bosses]]
+id = "folding_monkeys"
+name = "Folding Screen Monkeys"
+location = "Senpou Temple"
+required = true
+is_dlc = false
+flag_id = 9305
+order = 5
+
+[[bosses]]
+id = "corrupted_monk_illusion"
+name = "Corrupted Monk (Illusion)"
+location = "Mibu Village"
+required = true
+is_dlc = false
+flag_id = 9306
+order = 6
+aliases = ["Ghost Monk"]
+
+[[bosses]]
+id = "headless_ape"
+name = "Headless Ape"
+location = "Ashina Depths"
+required = false
+is_dlc = false
+flag_id = 9307
+order = 7
+
+[[bosses]]
+id = "great_shinobi_owl"
+name = "Great Shinobi Owl"
+location = "Ashina Castle"
+required = true
+is_dlc = false
+flag_id = 9308
+order = 8
+aliases = ["Owl"]
+
+[[bosses]]
+id = "corrupted_monk"
+name = "True Corrupted Monk"
+location = "Fountainhead Palace"
+required = true
+is_dlc = false
+flag_id = 9309
+order = 9
+
+[[bosses]]
+id = "divine_dragon"
+name = "Divine Dragon"
+location = "Fountainhead Palace"
+required = true
+is_dlc = false
+flag_id = 9310
+order = 10
+
+[[bosses]]
+id = "isshin_glock"
+name = "Isshin, the Sword Saint"
+location = "Ashina Reservoir"
+required = true
+is_dlc = false
+flag_id = 9312
+order = 11
+
+[[bosses]]
+id = "demon_of_hatred"
+name = "Demon of Hatred"
+location = "Ashina Outskirts"
+required = false
+is_dlc = false
+flag_id = 9313
+order = 12
+
+[[bosses]]
+id = "emma"
+name = "Emma, the Gentle Blade"
+location = "Ashina Castle"
+required = false
+is_dlc = false
+flag_id = 9315
+order = 13
+
+[[bosses]]
+id = "isshin_sword"
+name = "Isshin Ashina"
+location = "Ashina Castle"
+required = false
+is_dlc = false
+flag_id = 9316
+order = 14
+
+[[bosses]]
+id = "owl_father"
+name = "Owl (Father)"
+location = "Hirata Estate"
+required = false
+is_dlc = false
+flag_id = 9317
+order = 15
+aliases = ["Father Owl"]
+
+# Presets
+[[presets]]
+id = "all-bosses"
+name = "All Bosses"
+description = "All main game bosses (15 bosses)"
+boss_ids = [
+    "gyoubu", "lady_butterfly", "genichiro", "guardian_ape", "folding_monkeys",
+    "corrupted_monk_illusion", "headless_ape", "great_shinobi_owl", "corrupted_monk",
+    "divine_dragon", "isshin_glock", "demon_of_hatred", "emma", "isshin_sword", "owl_father"
+]
+
+[[presets]]
+id = "any-percent"
+name = "Immortal Severance Ending"
+description = "Required bosses only (10 bosses)"
+boss_ids = [
+    "gyoubu", "genichiro", "guardian_ape", "folding_monkeys",
+    "corrupted_monk_illusion", "great_shinobi_owl", "corrupted_monk",
+    "divine_dragon", "isshin_glock"
+]
+
+[[presets]]
+id = "shura"
+name = "Shura Ending"
+description = "Shura route bosses"
+boss_ids = [
+    "gyoubu", "genichiro", "guardian_ape", "folding_monkeys",
+    "corrupted_monk_illusion", "great_shinobi_owl", "emma", "isshin_sword"
+]

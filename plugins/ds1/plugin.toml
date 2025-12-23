@@ -1,0 +1,392 @@
+[plugin]
+id = "ds1"
+name = "Dark Souls: Remastered / PTDE"
+short_name = "DS1"
+version = "1.0.0"
+author = "NYA Core"
+description = "Dark Souls Remastered and Prepare to Die Edition autosplitter with full boss tracking"
+
+[process]
+# Supports both Remastered (64-bit) and PTDE (32-bit)
+names = ["DARK SOULS REMASTERED.exe", "DarkSoulsRemastered.exe", "darksouls.exe", "DARKSOULS.exe"]
+
+[autosplitter]
+enabled = true
+algorithm = "offset_table"
+
+# Offset table algorithm configuration (DS1 style)
+# Based on SoulSplitter by FrankvdStam
+[autosplitter.offset_table_config]
+primary_pattern = "event_flags"
+
+# Group offsets (from SoulSplitter)
+[autosplitter.offset_table_config.group_offsets]
+"0" = 0
+"1" = 1280       # 0x00500
+"5" = 24320      # 0x05F00
+"6" = 47360      # 0x0B900
+"7" = 70400      # 0x11300
+
+# Area indices (from SoulSplitter)
+[autosplitter.offset_table_config.area_indices]
+"000" = 0
+"100" = 1
+"101" = 2
+"102" = 3
+"110" = 4
+"120" = 5
+"121" = 6
+"130" = 7
+"131" = 8
+"132" = 9
+"140" = 10
+"141" = 11
+"150" = 12
+"151" = 13
+"160" = 14
+"170" = 15
+"180" = 16
+"181" = 17
+"200" = 18
+"210" = 19
+
+# Memory patterns for finding game data structures
+[[autosplitter.patterns]]
+name = "event_flags"
+pattern = "48 8B 0D ? ? ? ? 99 33 C2 45 33 C0 2B C2 8D 50 F6"
+rip_offset = 3
+instruction_len = 7
+
+# =============================================================================
+# LIVESPLIT-STYLE SCRIPT CONFIGURATION
+# =============================================================================
+
+[script]
+version = "1.0"
+name = "Dark Souls Remastered Script"
+description = "LiveSplit-style autosplitter script for Dark Souls Remastered"
+
+[script.state.eventFlags]
+type = "ptr"
+pattern = "48 8B 0D ?? ?? ?? ?? 99 33 C2 45 33 C0 2B C2 8D 50 F6"
+pattern_offset = 3
+pattern_length = 7
+
+[script.state.inGame]
+type = "bool"
+base_watcher = "eventFlags"
+offsets = [0x0]
+
+[script.hooks]
+start = "settings.autostart && current.inGame && !old.inGame"
+reset = "settings.autoreset && !current.inGame && old.inGame"
+split = "settings.splitOnDeath && current.playerHP == 0 && old.playerHP > 0"
+
+[script.settings]
+autostart = { default = true, label = "Auto-start timer", description = "Start timer when entering a new game" }
+autoreset = { default = false, label = "Auto-reset on menu", description = "Reset timer when returning to main menu" }
+splitOnDeath = { default = false, label = "Split on death", description = "Trigger split when player dies" }
+
+# =============================================================================
+# BOSSES
+# =============================================================================
+
+[[bosses]]
+id = "asylum_demon"
+name = "Asylum Demon"
+location = "Northern Undead Asylum"
+required = true
+is_dlc = false
+flag_id = 16
+order = 1
+aliases = ["Asylum"]
+
+[[bosses]]
+id = "taurus_demon"
+name = "Taurus Demon"
+location = "Undead Burg"
+required = true
+is_dlc = false
+flag_id = 11010901
+order = 2
+aliases = ["Taurus", "Bull"]
+
+[[bosses]]
+id = "bell_gargoyles"
+name = "Bell Gargoyles"
+location = "Undead Parish"
+required = true
+is_dlc = false
+flag_id = 3
+order = 3
+aliases = ["Gargoyles", "Gargs"]
+
+[[bosses]]
+id = "quelaag"
+name = "Chaos Witch Quelaag"
+location = "Blighttown"
+required = true
+is_dlc = false
+flag_id = 9
+order = 4
+aliases = ["Quelaag", "Spider"]
+
+[[bosses]]
+id = "iron_golem"
+name = "Iron Golem"
+location = "Sen's Fortress"
+required = true
+is_dlc = false
+flag_id = 11
+order = 5
+aliases = ["Golem"]
+
+[[bosses]]
+id = "ornstein_smough"
+name = "Ornstein & Smough"
+location = "Anor Londo"
+required = true
+is_dlc = false
+flag_id = 12
+order = 6
+aliases = ["O&S", "OnS", "Orny and Smough", "Pikachu and Snorlax"]
+
+[[bosses]]
+id = "sif"
+name = "Great Grey Wolf Sif"
+location = "Darkroot Garden"
+required = true
+is_dlc = false
+flag_id = 5
+order = 7
+aliases = ["Sif", "Doggo", "Good Boy"]
+
+[[bosses]]
+id = "four_kings"
+name = "Four Kings"
+location = "The Abyss"
+required = true
+is_dlc = false
+flag_id = 13
+order = 8
+aliases = ["4K", "Kings"]
+
+[[bosses]]
+id = "seath"
+name = "Seath the Scaleless"
+location = "Crystal Cave"
+required = true
+is_dlc = false
+flag_id = 14
+order = 9
+aliases = ["Seath"]
+
+[[bosses]]
+id = "nito"
+name = "Gravelord Nito"
+location = "Tomb of the Giants"
+required = true
+is_dlc = false
+flag_id = 7
+order = 10
+aliases = ["Nito"]
+
+[[bosses]]
+id = "bed_of_chaos"
+name = "Bed of Chaos"
+location = "Lost Izalith"
+required = true
+is_dlc = false
+flag_id = 10
+order = 11
+aliases = ["BoC", "Bed", "Worst Boss"]
+
+[[bosses]]
+id = "gwyn"
+name = "Gwyn, Lord of Cinder"
+location = "Kiln of the First Flame"
+required = true
+is_dlc = false
+flag_id = 15
+order = 12
+aliases = ["Gwyn", "Final Boss"]
+
+[[bosses]]
+id = "capra_demon"
+name = "Capra Demon"
+location = "Lower Undead Burg"
+required = false
+is_dlc = false
+flag_id = 11010902
+order = 13
+aliases = ["Capra", "Goat"]
+
+[[bosses]]
+id = "gaping_dragon"
+name = "Gaping Dragon"
+location = "Depths"
+required = false
+is_dlc = false
+flag_id = 2
+order = 14
+aliases = ["Gaping", "Vagina Dragon"]
+
+[[bosses]]
+id = "moonlight_butterfly"
+name = "Moonlight Butterfly"
+location = "Darkroot Garden"
+required = false
+is_dlc = false
+flag_id = 11200900
+order = 15
+aliases = ["Butterfly", "MLB"]
+
+[[bosses]]
+id = "stray_demon"
+name = "Stray Demon"
+location = "Northern Undead Asylum"
+required = false
+is_dlc = false
+flag_id = 11810900
+order = 16
+aliases = ["Stray"]
+
+[[bosses]]
+id = "demon_firesage"
+name = "Demon Firesage"
+location = "Lost Izalith"
+required = false
+is_dlc = false
+flag_id = 11410410
+order = 17
+aliases = ["Firesage"]
+
+[[bosses]]
+id = "centipede_demon"
+name = "Centipede Demon"
+location = "Lost Izalith"
+required = false
+is_dlc = false
+flag_id = 11410901
+order = 18
+aliases = ["Centipede"]
+
+[[bosses]]
+id = "crossbreed_priscilla"
+name = "Crossbreed Priscilla"
+location = "Painted World"
+required = false
+is_dlc = false
+flag_id = 4
+order = 19
+aliases = ["Priscilla", "Fluffy Tail"]
+
+[[bosses]]
+id = "dark_sun_gwyndolin"
+name = "Dark Sun Gwyndolin"
+location = "Anor Londo"
+required = false
+is_dlc = false
+flag_id = 11510900
+order = 20
+aliases = ["Gwyndolin", "Trap"]
+
+[[bosses]]
+id = "ceaseless_discharge"
+name = "Ceaseless Discharge"
+location = "Demon Ruins"
+required = false
+is_dlc = false
+flag_id = 11410900
+order = 21
+aliases = ["Ceaseless", "CD"]
+
+[[bosses]]
+id = "pinwheel"
+name = "Pinwheel"
+location = "Catacombs"
+required = false
+is_dlc = false
+flag_id = 6
+order = 22
+aliases = ["Easiest Boss"]
+
+# Artorias of the Abyss DLC
+[[bosses]]
+id = "sanctuary_guardian"
+name = "Sanctuary Guardian"
+location = "Royal Wood"
+required = true
+is_dlc = true
+dlc_name = "Artorias of the Abyss"
+flag_id = 11210000
+order = 23
+aliases = ["Sanctuary", "Manticore"]
+
+[[bosses]]
+id = "artorias"
+name = "Knight Artorias"
+location = "Royal Wood"
+required = true
+is_dlc = true
+dlc_name = "Artorias of the Abyss"
+flag_id = 11210001
+order = 24
+aliases = ["Artorias", "Arty"]
+
+[[bosses]]
+id = "manus"
+name = "Manus, Father of the Abyss"
+location = "Chasm of the Abyss"
+required = true
+is_dlc = true
+dlc_name = "Artorias of the Abyss"
+flag_id = 11210002
+order = 25
+aliases = ["Manus", "Big Hand"]
+
+[[bosses]]
+id = "kalameet"
+name = "Black Dragon Kalameet"
+location = "Royal Wood"
+required = true
+is_dlc = true
+dlc_name = "Artorias of the Abyss"
+flag_id = 11210004
+order = 26
+aliases = ["Kalameet"]
+
+# Presets
+[[presets]]
+id = "all-bosses"
+name = "All Bosses"
+description = "All main game bosses (22 bosses)"
+boss_ids = [
+    "asylum_demon", "taurus_demon", "bell_gargoyles", "quelaag", "iron_golem",
+    "ornstein_smough", "sif", "four_kings", "seath", "nito", "bed_of_chaos", "gwyn",
+    "capra_demon", "gaping_dragon", "moonlight_butterfly", "stray_demon",
+    "demon_firesage", "centipede_demon", "crossbreed_priscilla", "dark_sun_gwyndolin",
+    "ceaseless_discharge", "pinwheel"
+]
+
+[[presets]]
+id = "all-bosses-dlc"
+name = "All Bosses + DLC"
+description = "All bosses including DLC (26 bosses)"
+boss_ids = [
+    "asylum_demon", "taurus_demon", "bell_gargoyles", "quelaag", "iron_golem",
+    "ornstein_smough", "sif", "four_kings", "seath", "nito", "bed_of_chaos", "gwyn",
+    "capra_demon", "gaping_dragon", "moonlight_butterfly", "stray_demon",
+    "demon_firesage", "centipede_demon", "crossbreed_priscilla", "dark_sun_gwyndolin",
+    "ceaseless_discharge", "pinwheel",
+    "sanctuary_guardian", "artorias", "manus", "kalameet"
+]
+
+[[presets]]
+id = "any-percent"
+name = "Any%"
+description = "Required bosses only (12 bosses)"
+boss_ids = [
+    "asylum_demon", "bell_gargoyles", "quelaag", "iron_golem",
+    "ornstein_smough", "sif", "four_kings", "seath", "nito", "bed_of_chaos", "gwyn"
+]

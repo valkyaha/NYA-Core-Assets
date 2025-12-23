@@ -1,0 +1,510 @@
+[plugin]
+id = "eldenring"
+name = "Elden Ring"
+short_name = "ER"
+version = "1.0.0"
+author = "NYA Core"
+description = "Elden Ring autosplitter with full boss tracking including Shadow of the Erdtree DLC"
+
+[process]
+names = ["eldenring.exe"]
+
+[autosplitter]
+enabled = true
+algorithm = "binary_tree"
+
+# Binary tree algorithm configuration (Elden Ring style)
+# Based on SoulSplitter by FrankvdStam
+[autosplitter.tree_config]
+primary_pattern = "virtual_memory_flag"
+pointer_chain = []  # Direct access after RIP resolution
+divisor_offset = 28         # 0x1c
+tree_root_offset = 56       # 0x38
+multiplier_offset = 32      # 0x20
+base_addr_offset = 40       # 0x28
+
+# Memory patterns for finding game data structures
+[[autosplitter.patterns]]
+name = "virtual_memory_flag"
+pattern = "44 89 7c 24 28 4c 8b 25 ? ? ? ? 4d 85 e4"
+rip_offset = 8
+instruction_len = 12
+
+# =============================================================================
+# LIVESPLIT-STYLE SCRIPT CONFIGURATION
+# =============================================================================
+
+[script]
+version = "1.0"
+name = "Elden Ring Script"
+description = "LiveSplit-style autosplitter script for Elden Ring"
+
+# Memory state definitions
+[script.state.virtualMemoryFlag]
+type = "ptr"
+pattern = "44 89 7c 24 28 4c 8b 25 ?? ?? ?? ?? 4d 85 e4"
+pattern_offset = 8
+pattern_length = 12
+
+[script.state.gameDataMan]
+type = "ptr"
+pattern = "48 8b 05 ?? ?? ?? ?? 48 85 c0 74 05 48 8b 40 58 c3 c3"
+pattern_offset = 3
+pattern_length = 7
+
+[script.state.inGame]
+type = "bool"
+base_watcher = "gameDataMan"
+offsets = [0x0]
+
+[script.state.playerHP]
+type = "i32"
+base_watcher = "gameDataMan"
+offsets = [0x8, 0x0, 0x190, 0x0, 0x138]
+
+[script.state.playerMaxHP]
+type = "i32"
+base_watcher = "gameDataMan"
+offsets = [0x8, 0x0, 0x190, 0x0, 0x13C]
+
+[script.state.igt]
+type = "i32"
+base_watcher = "gameDataMan"
+offsets = [0xA0]
+
+[script.state.isLoading]
+type = "u8"
+pattern = "89 44 24 40 48 8b 0d ?? ?? ?? ?? 48 85 c9 74"
+pattern_offset = 7
+pattern_length = 11
+offsets = [0x0, 0xE8]
+
+[script.hooks]
+start = "settings.autostart && current.inGame && !old.inGame && current.igt < 5000"
+reset = "settings.autoreset && !current.inGame && old.inGame"
+isLoading = "current.isLoading != 0"
+gameTime = "current.igt / 1000.0"
+split = "settings.splitOnDeath && current.playerHP == 0 && old.playerHP > 0"
+
+[script.settings]
+autostart = { default = true, label = "Auto-start timer", description = "Start timer when entering a new game" }
+autoreset = { default = false, label = "Auto-reset on menu", description = "Reset timer when returning to main menu" }
+splitOnDeath = { default = false, label = "Split on death", description = "Trigger split when player dies" }
+loadRemoval = { default = true, label = "Load removal", description = "Pause timer during loading screens" }
+
+# =============================================================================
+# REMEMBRANCE BOSSES (MAIN STORY)
+# =============================================================================
+
+# Remembrance Bosses (Main Story)
+[[bosses]]
+id = "margit"
+name = "Margit, the Fell Omen"
+location = "Stormhill"
+required = true
+is_dlc = false
+flag_id = 10000850
+order = 1
+
+[[bosses]]
+id = "godrick"
+name = "Godrick the Grafted"
+location = "Stormveil Castle"
+required = true
+is_dlc = false
+flag_id = 10000800
+order = 2
+
+[[bosses]]
+id = "red_wolf"
+name = "Red Wolf of Radagon"
+location = "Raya Lucaria Academy"
+required = true
+is_dlc = false
+flag_id = 14000850
+order = 3
+
+[[bosses]]
+id = "rennala"
+name = "Rennala, Queen of the Full Moon"
+location = "Raya Lucaria Academy"
+required = true
+is_dlc = false
+flag_id = 14000800
+order = 4
+
+[[bosses]]
+id = "radahn"
+name = "Starscourge Radahn"
+location = "Redmane Castle"
+required = true
+is_dlc = false
+flag_id = 1252380800
+order = 5
+
+[[bosses]]
+id = "godfrey_shade"
+name = "Godfrey, First Elden Lord (Golden Shade)"
+location = "Leyndell, Royal Capital"
+required = true
+is_dlc = false
+flag_id = 11000850
+order = 6
+
+[[bosses]]
+id = "morgott"
+name = "Morgott, the Omen King"
+location = "Leyndell, Royal Capital"
+required = true
+is_dlc = false
+flag_id = 11000800
+order = 7
+
+[[bosses]]
+id = "fire_giant"
+name = "Fire Giant"
+location = "Mountaintops of the Giants"
+required = true
+is_dlc = false
+flag_id = 1052520800
+order = 8
+
+[[bosses]]
+id = "godskin_duo"
+name = "Godskin Duo"
+location = "Crumbling Farum Azula"
+required = true
+is_dlc = false
+flag_id = 13000800
+order = 9
+
+[[bosses]]
+id = "maliketh"
+name = "Maliketh, the Black Blade"
+location = "Crumbling Farum Azula"
+required = true
+is_dlc = false
+flag_id = 13000850
+order = 10
+
+[[bosses]]
+id = "gideon"
+name = "Sir Gideon Ofnir, the All-Knowing"
+location = "Leyndell, Ashen Capital"
+required = true
+is_dlc = false
+flag_id = 11050850
+order = 11
+
+[[bosses]]
+id = "godfrey"
+name = "Godfrey, First Elden Lord / Hoarah Loux"
+location = "Leyndell, Ashen Capital"
+required = true
+is_dlc = false
+flag_id = 11050800
+order = 12
+
+[[bosses]]
+id = "radagon"
+name = "Radagon of the Golden Order / Elden Beast"
+location = "Elden Throne"
+required = true
+is_dlc = false
+flag_id = 19000800
+order = 13
+aliases = ["Elden Beast"]
+
+# Other Remembrance Bosses (Optional)
+[[bosses]]
+id = "rykard"
+name = "Rykard, Lord of Blasphemy"
+location = "Volcano Manor"
+required = false
+is_dlc = false
+flag_id = 16000800
+order = 14
+
+[[bosses]]
+id = "mohg"
+name = "Mohg, Lord of Blood"
+location = "Mohgwyn Palace"
+required = false
+is_dlc = false
+flag_id = 12050800
+order = 15
+
+[[bosses]]
+id = "malenia"
+name = "Malenia, Blade of Miquella"
+location = "Elphael, Brace of the Haligtree"
+required = false
+is_dlc = false
+flag_id = 15000800
+order = 16
+
+[[bosses]]
+id = "astel"
+name = "Astel, Naturalborn of the Void"
+location = "Lake of Rot"
+required = false
+is_dlc = false
+flag_id = 12010800
+order = 17
+
+[[bosses]]
+id = "dragonlord"
+name = "Dragonlord Placidusax"
+location = "Crumbling Farum Azula"
+required = false
+is_dlc = false
+flag_id = 13000890
+order = 18
+
+# Major Non-Remembrance Bosses
+[[bosses]]
+id = "loretta_caria"
+name = "Royal Knight Loretta"
+location = "Caria Manor"
+required = false
+is_dlc = false
+flag_id = 1035500800
+order = 19
+
+[[bosses]]
+id = "loretta_haligtree"
+name = "Loretta, Knight of the Haligtree"
+location = "Miquella's Haligtree"
+required = false
+is_dlc = false
+flag_id = 15000850
+order = 20
+
+[[bosses]]
+id = "ancestor_spirit"
+name = "Ancestor Spirit"
+location = "Siofra River"
+required = false
+is_dlc = false
+flag_id = 12020800
+order = 21
+
+[[bosses]]
+id = "regal_ancestor"
+name = "Regal Ancestor Spirit"
+location = "Nokron, Eternal City"
+required = false
+is_dlc = false
+flag_id = 12030800
+order = 22
+
+[[bosses]]
+id = "mimic_tear"
+name = "Mimic Tear"
+location = "Nokron, Eternal City"
+required = false
+is_dlc = false
+flag_id = 12010850
+order = 23
+
+[[bosses]]
+id = "valiant_gargoyles"
+name = "Valiant Gargoyle"
+location = "Siofra Aqueduct"
+required = false
+is_dlc = false
+flag_id = 12020850
+order = 24
+
+[[bosses]]
+id = "fortissax"
+name = "Lichdragon Fortissax"
+location = "Deeproot Depths"
+required = false
+is_dlc = false
+flag_id = 12030850
+order = 25
+
+[[bosses]]
+id = "mohg_omen"
+name = "Mohg, the Omen"
+location = "Subterranean Shunning-Grounds"
+required = false
+is_dlc = false
+flag_id = 35000800
+order = 26
+
+[[bosses]]
+id = "elemer"
+name = "Elemer of the Briar"
+location = "The Shaded Castle"
+required = false
+is_dlc = false
+flag_id = 1039540800
+order = 27
+
+[[bosses]]
+id = "commander_niall"
+name = "Commander Niall"
+location = "Castle Sol"
+required = false
+is_dlc = false
+flag_id = 1051570800
+order = 28
+
+# Shadow of the Erdtree DLC
+[[bosses]]
+id = "divine_beast"
+name = "Divine Beast Dancing Lion"
+location = "Belurat, Tower Settlement"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 20000800
+order = 29
+
+[[bosses]]
+id = "rellana"
+name = "Rellana, Twin Moon Knight"
+location = "Castle Ensis"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 21000800
+order = 30
+
+[[bosses]]
+id = "putrescent_knight"
+name = "Putrescent Knight"
+location = "Stone Coffin Fissure"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 22000850
+order = 31
+
+[[bosses]]
+id = "messmer"
+name = "Messmer the Impaler"
+location = "Shadow Keep"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 21010800
+order = 32
+
+[[bosses]]
+id = "romina"
+name = "Romina, Saint of the Bud"
+location = "Church of the Bud"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 2044470800
+order = 33
+
+[[bosses]]
+id = "metyr"
+name = "Metyr, Mother of Fingers"
+location = "Cathedral of Manus Metyr"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 2047390800
+order = 34
+
+[[bosses]]
+id = "midra"
+name = "Midra, Lord of Frenzied Flame"
+location = "Midra's Manse"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 2051420800
+order = 35
+
+[[bosses]]
+id = "bayle"
+name = "Bayle the Dread"
+location = "Jagged Peak"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 2048510800
+order = 36
+
+[[bosses]]
+id = "promised_consort"
+name = "Promised Consort Radahn"
+location = "Enir-Ilim"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 20010800
+order = 37
+
+[[bosses]]
+id = "gaius"
+name = "Commander Gaius"
+location = "Shadow Keep"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 21010850
+order = 38
+
+[[bosses]]
+id = "scadutree_avatar"
+name = "Scadutree Avatar"
+location = "Shadow Keep"
+required = true
+is_dlc = true
+dlc_name = "Shadow of the Erdtree"
+flag_id = 22000800
+order = 39
+
+# Presets
+[[presets]]
+id = "all-bosses"
+name = "All Bosses"
+description = "All main game bosses (28 bosses)"
+boss_ids = [
+    "margit", "godrick", "red_wolf", "rennala", "radahn", "godfrey_shade", "morgott",
+    "fire_giant", "godskin_duo", "maliketh", "gideon", "godfrey", "radagon",
+    "rykard", "mohg", "malenia", "astel", "dragonlord",
+    "loretta_caria", "loretta_haligtree", "ancestor_spirit", "regal_ancestor",
+    "mimic_tear", "valiant_gargoyles", "fortissax", "mohg_omen", "elemer", "commander_niall"
+]
+
+[[presets]]
+id = "all-bosses-dlc"
+name = "All Bosses + DLC"
+description = "All bosses including Shadow of the Erdtree (39 bosses)"
+boss_ids = [
+    "margit", "godrick", "red_wolf", "rennala", "radahn", "godfrey_shade", "morgott",
+    "fire_giant", "godskin_duo", "maliketh", "gideon", "godfrey", "radagon",
+    "rykard", "mohg", "malenia", "astel", "dragonlord",
+    "loretta_caria", "loretta_haligtree", "ancestor_spirit", "regal_ancestor",
+    "mimic_tear", "valiant_gargoyles", "fortissax", "mohg_omen", "elemer", "commander_niall",
+    "divine_beast", "rellana", "putrescent_knight", "messmer", "romina", "metyr",
+    "midra", "bayle", "promised_consort", "gaius", "scadutree_avatar"
+]
+
+[[presets]]
+id = "any-percent"
+name = "Any%"
+description = "Required story bosses only (13 bosses)"
+boss_ids = [
+    "margit", "godrick", "radahn", "godfrey_shade", "morgott",
+    "fire_giant", "godskin_duo", "maliketh", "gideon", "godfrey", "radagon"
+]
+
+[[presets]]
+id = "remembrances"
+name = "All Remembrances"
+description = "All Remembrance bosses (18 bosses)"
+boss_ids = [
+    "margit", "godrick", "red_wolf", "rennala", "radahn", "godfrey_shade", "morgott",
+    "fire_giant", "godskin_duo", "maliketh", "gideon", "godfrey", "radagon",
+    "rykard", "mohg", "malenia", "astel", "dragonlord"
+]
