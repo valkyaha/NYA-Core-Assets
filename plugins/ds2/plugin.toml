@@ -2,7 +2,7 @@
 id = "ds2"
 name = "Dark Souls II: Scholar of the First Sin"
 short_name = "DS2"
-version = "1.0.0"
+version = "1.1.0"
 author = "NYA Core"
 description = "Dark Souls II autosplitter with full boss tracking"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ds2/plugin.toml"
@@ -29,6 +29,15 @@ description = "For practicing specific sections (use offline only)"
 author = "Cheat Engine Team"
 version = "Latest"
 download_url = "https://www.cheatengine.org/"
+category = "practice"
+required = false
+
+[[tools]]
+name = "SilkySouls 2"
+description = "Comprehensive practice tool with save states, stats editor, and debug features"
+author = "borgCode"
+version = "Latest"
+download_url = "https://github.com/borgCode/SilkySouls2/releases"
 category = "practice"
 required = false
 

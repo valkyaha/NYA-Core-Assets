@@ -1,7 +1,7 @@
 {
-  "version": "2.1.1",
+  "version": "2.2.0",
   "last_updated": "2025-12-23",
-  "compatible_app_versions": ["2.0.0", "2.0.1", "2.0.2", "2.1.0", "2.1.1"],
+  "compatible_app_versions": ["2.0.0", "2.0.1", "2.0.2", "2.1.0", "2.1.1", "2.2.0"],
   "repository": "https://github.com/valkyaha/NYA-Core-Assets",
   "plugins": [
     {
@@ -28,23 +28,23 @@
     {
       "id": "ds1",
       "name": "Dark Souls",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "plugins/ds1/plugin.toml",
-      "tool_count": 3
+      "tool_count": 4
     },
     {
       "id": "ds2",
       "name": "Dark Souls II",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "plugins/ds2/plugin.toml",
-      "tool_count": 2
+      "tool_count": 3
     },
     {
       "id": "ds3",
       "name": "Dark Souls III",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "plugins/ds3/plugin.toml",
-      "tool_count": 3
+      "tool_count": 4
     },
     {
       "id": "eldenring",

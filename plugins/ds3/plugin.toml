@@ -2,7 +2,7 @@
 id = "ds3"
 name = "Dark Souls III"
 short_name = "DS3"
-version = "1.0.0"
+version = "1.1.0"
 author = "NYA Core"
 description = "Dark Souls III autosplitter with full boss tracking"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ds3/plugin.toml"
@@ -39,6 +39,15 @@ author = "FrankvdStam"
 version = "3.0.0"
 download_url = "https://github.com/FrankvdStam/SoulSplitter/releases/latest/download/SoulSplitter.zip"
 category = "speedrun"
+required = false
+
+[[tools]]
+name = "SilkySouls 3"
+description = "Comprehensive practice tool with save states, stats editor, and debug features"
+author = "borgCode"
+version = "Latest"
+download_url = "https://github.com/borgCode/SilkySouls3/releases"
+category = "practice"
 required = false
 
 [autosplitter]

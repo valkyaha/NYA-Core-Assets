@@ -2,7 +2,7 @@
 id = "ds1"
 name = "Dark Souls: Remastered / PTDE"
 short_name = "DS1"
-version = "1.0.0"
+version = "1.1.0"
 author = "NYA Core"
 description = "Dark Souls Remastered and Prepare to Die Edition autosplitter with full boss tracking"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ds1/plugin.toml"
@@ -40,6 +40,15 @@ author = "Durante"
 version = "2.4"
 download_url = "https://www.nexusmods.com/darksouls/mods/19"
 category = "mod"
+required = false
+
+[[tools]]
+name = "SilkySouls 1"
+description = "Comprehensive practice tool with save states, stats editor, and debug features"
+author = "borgCode"
+version = "Latest"
+download_url = "https://github.com/borgCode/SilkySouls1/releases"
+category = "practice"
 required = false
 
 [autosplitter]
