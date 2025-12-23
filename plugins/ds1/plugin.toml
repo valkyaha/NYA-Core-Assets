@@ -2,10 +2,16 @@
 id = "ds1"
 name = "Dark Souls: Remastered / PTDE"
 short_name = "DS1"
-version = "1.1.0"
+version = "1.2.0"
 author = "NYA Core"
 description = "Dark Souls Remastered and Prepare to Die Edition autosplitter with full boss tracking"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ds1/plugin.toml"
+
+# Save file location for practice mode backup/restore
+# Remastered uses NBGI subfolder, PTDE uses Documents/NBGI
+save_location_windows = "%APPDATA%/NBGI/DARK SOULS REMASTERED"
+save_location_linux = "~/.local/share/Steam/userdata"
+save_type = "folder"
 
 [process]
 # Supports both Remastered (64-bit) and PTDE (32-bit)

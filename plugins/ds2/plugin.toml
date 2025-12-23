@@ -2,10 +2,15 @@
 id = "ds2"
 name = "Dark Souls II: Scholar of the First Sin"
 short_name = "DS2"
-version = "1.1.0"
+version = "1.2.0"
 author = "NYA Core"
 description = "Dark Souls II autosplitter with full boss tracking"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ds2/plugin.toml"
+
+# Save file location for practice mode backup/restore
+save_location_windows = "%APPDATA%/DarkSoulsII"
+save_location_linux = "~/.local/share/Steam/userdata"
+save_type = "folder"
 
 [process]
 names = ["DarkSoulsII.exe"]

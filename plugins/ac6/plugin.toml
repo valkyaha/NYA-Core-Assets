@@ -2,10 +2,15 @@
 id = "ac6"
 name = "Armored Core VI: Fires of Rubicon"
 short_name = "AC6"
-version = "1.0.0"
+version = "1.1.0"
 author = "NYA Core"
 description = "Armored Core VI autosplitter with mission tracking"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ac6/plugin.toml"
+
+# Save file location for practice mode backup/restore
+save_location_windows = "%APPDATA%/ArmoredCore6"
+save_location_linux = "~/.local/share/Steam/userdata"
+save_type = "folder"
 
 [process]
 names = ["armoredcore6.exe"]

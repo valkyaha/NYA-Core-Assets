@@ -2,10 +2,16 @@
 id = "des"
 name = "Demon's Souls"
 short_name = "DeS"
-version = "1.0.0"
+version = "1.1.0"
 author = "NYA Core"
 description = "Demon's Souls boss tracking (PS3/PS5 - manual splits only)"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/des/plugin.toml"
+
+# Save file location - Console game, configure manually in Settings > Plugin > Save Location
+# For RPCS3 emulator: typically ~/.config/rpcs3/dev_hdd0/home/00000001/savedata/
+# save_location_windows = ""
+# save_location_linux = "~/.config/rpcs3/dev_hdd0/home/00000001/savedata"
+# save_type = "folder"
 
 # No process detection - console game
 [process]

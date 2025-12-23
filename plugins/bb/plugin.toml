@@ -2,10 +2,15 @@
 id = "bb"
 name = "Bloodborne"
 short_name = "BB"
-version = "1.0.0"
+version = "1.1.0"
 author = "NYA Core"
 description = "Bloodborne boss tracking including The Old Hunters DLC (PS4 - manual splits only)"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/bb/plugin.toml"
+
+# Save file location - Console game, configure manually in Settings > Plugin > Save Location
+# For shadPS4 emulator or extracted saves, set your custom save path
+# save_location_windows = ""
+# save_type = "folder"
 
 # No process detection - console game
 [process]

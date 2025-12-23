@@ -2,10 +2,15 @@
 id = "ds3"
 name = "Dark Souls III"
 short_name = "DS3"
-version = "1.1.0"
+version = "1.2.0"
 author = "NYA Core"
 description = "Dark Souls III autosplitter with full boss tracking"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/ds3/plugin.toml"
+
+# Save file location for practice mode backup/restore
+save_location_windows = "%APPDATA%/DarkSoulsIII"
+save_location_linux = "~/.local/share/Steam/userdata"
+save_type = "folder"
 
 [process]
 names = ["DarkSoulsIII.exe"]

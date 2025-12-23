@@ -2,10 +2,15 @@
 id = "sekiro"
 name = "Sekiro: Shadows Die Twice"
 short_name = "SEK"
-version = "1.0.0"
+version = "1.1.0"
 author = "NYA Core"
 description = "Sekiro autosplitter with full boss tracking"
 update_url = "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/plugins/sekiro/plugin.toml"
+
+# Save file location for practice mode backup/restore
+save_location_windows = "%APPDATA%/Sekiro"
+save_location_linux = "~/.local/share/Steam/userdata"
+save_type = "folder"
 
 [process]
 names = ["sekiro.exe"]
