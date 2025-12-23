@@ -1,0 +1,90 @@
+{
+  "version": "2.1.0",
+  "last_updated": "2025-12-23",
+  "compatible_app_versions": ["2.0.0", "2.0.1", "2.0.2", "2.1.0"],
+  "repository": "https://github.com/valkyaha/NYA-Core-Assets",
+  "plugins": [
+    {
+      "id": "ac6",
+      "name": "Armored Core VI",
+      "version": "1.0.0",
+      "path": "plugins/ac6/plugin.toml"
+    },
+    {
+      "id": "bb",
+      "name": "Bloodborne",
+      "version": "1.0.0",
+      "path": "plugins/bb/plugin.toml"
+    },
+    {
+      "id": "des",
+      "name": "Demon's Souls",
+      "version": "1.0.0",
+      "path": "plugins/des/plugin.toml"
+    },
+    {
+      "id": "ds1",
+      "name": "Dark Souls",
+      "version": "1.0.0",
+      "path": "plugins/ds1/plugin.toml"
+    },
+    {
+      "id": "ds2",
+      "name": "Dark Souls II",
+      "version": "1.0.0",
+      "path": "plugins/ds2/plugin.toml"
+    },
+    {
+      "id": "ds3",
+      "name": "Dark Souls III",
+      "version": "1.0.0",
+      "path": "plugins/ds3/plugin.toml"
+    },
+    {
+      "id": "eldenring",
+      "name": "Elden Ring",
+      "version": "1.0.0",
+      "path": "plugins/eldenring/plugin.toml"
+    },
+    {
+      "id": "sekiro",
+      "name": "Sekiro: Shadows Die Twice",
+      "version": "1.0.0",
+      "path": "plugins/sekiro/plugin.toml"
+    }
+  ],
+  "languages": [
+    {
+      "code": "ca",
+      "name": "Catalan",
+      "native_name": "Català",
+      "version": "1.0.0",
+      "path": "languages/ca.json"
+    },
+    {
+      "code": "es",
+      "name": "Spanish",
+      "native_name": "Español",
+      "version": "1.0.0",
+      "path": "languages/es.json"
+    },
+    {
+      "code": "gl",
+      "name": "Galician",
+      "native_name": "Galego",
+      "version": "1.0.0",
+      "path": "languages/gl.json"
+    },
+    {
+      "code": "lolcat",
+      "name": "LOLcat",
+      "native_name": "LOLcat",
+      "version": "1.0.0",
+      "path": "languages/lolcat.json"
+    }
+  ],
+  "download": {
+    "base_url": "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/",
+    "release_url": "https://github.com/valkyaha/NYA-Core-Assets/releases/latest"
+  }
+}
