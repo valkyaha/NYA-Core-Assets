@@ -106,7 +106,13 @@ This repository is automatically synced with official NYA Core releases. When a 
 
 ## 📜 License
 
-These assets are part of NYA Core and follow the same license as the main application.
+**Plugins are licensed under GPL-3.0** due to derivative data from SoulSplitter.
+
+Language files remain under MIT OR Apache-2.0.
+
+## 🙏 Special Thanks
+
+- **[FrankvdStam](https://github.com/FrankvdStam)** - Creator of [SoulSplitter](https://github.com/FrankvdStam/SoulSplitter), whose comprehensive boss, bonfire, grace, idol, and event flag data made the autosplitter functionality possible. The plugin data is derived from SoulSplitter's C# source files.
 
 ## 🔗 Related Links
 

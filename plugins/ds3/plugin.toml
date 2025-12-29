@@ -356,6 +356,486 @@ order = 25
 aliases = ["Gael", "Uncle Gael"]
 
 # =============================================================================
+# BONFIRES - All 77 bonfires from SoulSplitter
+# =============================================================================
+
+# Cemetery of Ash
+[[bonfires]]
+id = "firelink_shrine"
+name = "Firelink Shrine"
+location = "Cemetery of Ash"
+flag_id = 14000000
+
+[[bonfires]]
+id = "cemetery_of_ash"
+name = "Cemetery of Ash"
+location = "Cemetery of Ash"
+flag_id = 14000001
+
+[[bonfires]]
+id = "iudex_gundyr_bonfire"
+name = "Iudex Gundyr"
+location = "Cemetery of Ash"
+flag_id = 14000002
+
+[[bonfires]]
+id = "untended_graves"
+name = "Untended Graves"
+location = "Cemetery of Ash"
+flag_id = 14000003
+
+[[bonfires]]
+id = "champion_gundyr_bonfire"
+name = "Champion Gundyr"
+location = "Cemetery of Ash"
+flag_id = 14000004
+
+# High Wall of Lothric
+[[bonfires]]
+id = "high_wall"
+name = "High Wall of Lothric"
+location = "High Wall of Lothric"
+flag_id = 13000009
+
+[[bonfires]]
+id = "tower_on_the_wall"
+name = "Tower on the Wall"
+location = "High Wall of Lothric"
+flag_id = 13000005
+
+[[bonfires]]
+id = "vordt_bonfire"
+name = "Vordt of the Boreal Valley"
+location = "High Wall of Lothric"
+flag_id = 13000002
+
+[[bonfires]]
+id = "dancer_bonfire"
+name = "Dancer of the Boreal Valley"
+location = "High Wall of Lothric"
+flag_id = 13000004
+
+[[bonfires]]
+id = "oceiros_bonfire"
+name = "Oceiros, the Consumed King"
+location = "High Wall of Lothric"
+flag_id = 13000001
+
+# Undead Settlement
+[[bonfires]]
+id = "foot_of_high_wall"
+name = "Foot of the High Wall"
+location = "Undead Settlement"
+flag_id = 13100004
+
+[[bonfires]]
+id = "undead_settlement"
+name = "Undead Settlement"
+location = "Undead Settlement"
+flag_id = 13100000
+
+[[bonfires]]
+id = "cliff_underside"
+name = "Cliff Underside"
+location = "Undead Settlement"
+flag_id = 13100002
+
+[[bonfires]]
+id = "dilapidated_bridge"
+name = "Dilapidated Bridge"
+location = "Undead Settlement"
+flag_id = 13100003
+
+[[bonfires]]
+id = "pit_of_hollows"
+name = "Pit of Hollows"
+location = "Undead Settlement"
+flag_id = 13100001
+
+# Road of Sacrifices
+[[bonfires]]
+id = "road_of_sacrifices"
+name = "Road of Sacrifices"
+location = "Road of Sacrifices"
+flag_id = 13300006
+
+[[bonfires]]
+id = "halfway_fortress"
+name = "Halfway Fortress"
+location = "Road of Sacrifices"
+flag_id = 13300000
+
+[[bonfires]]
+id = "crucifixion_woods"
+name = "Crucifixion Woods"
+location = "Road of Sacrifices"
+flag_id = 13300007
+
+[[bonfires]]
+id = "crystal_sage_bonfire"
+name = "Crystal Sage"
+location = "Road of Sacrifices"
+flag_id = 13300002
+
+[[bonfires]]
+id = "farron_keep"
+name = "Farron Keep"
+location = "Road of Sacrifices"
+flag_id = 13300003
+
+[[bonfires]]
+id = "keep_ruins"
+name = "Keep Ruins"
+location = "Road of Sacrifices"
+flag_id = 13300004
+
+[[bonfires]]
+id = "farron_keep_perimeter"
+name = "Farron Keep Perimeter"
+location = "Road of Sacrifices"
+flag_id = 13300008
+
+[[bonfires]]
+id = "old_wolf"
+name = "Old Wolf of Farron"
+location = "Road of Sacrifices"
+flag_id = 13300005
+
+[[bonfires]]
+id = "abyss_watchers_bonfire"
+name = "Abyss Watchers"
+location = "Road of Sacrifices"
+flag_id = 13300001
+
+# Cathedral of the Deep
+[[bonfires]]
+id = "cathedral_of_deep"
+name = "Cathedral of the Deep"
+location = "Cathedral of the Deep"
+flag_id = 13500003
+
+[[bonfires]]
+id = "cleansing_chapel"
+name = "Cleansing Chapel"
+location = "Cathedral of the Deep"
+flag_id = 13500000
+
+[[bonfires]]
+id = "rosarias_bed"
+name = "Rosaria's Bed Chamber"
+location = "Cathedral of the Deep"
+flag_id = 13500002
+
+[[bonfires]]
+id = "deacons_bonfire"
+name = "Deacons of the Deep"
+location = "Cathedral of the Deep"
+flag_id = 13500001
+
+# Catacombs of Carthus
+[[bonfires]]
+id = "catacombs_carthus"
+name = "Catacombs of Carthus"
+location = "Catacombs of Carthus"
+flag_id = 13800006
+
+[[bonfires]]
+id = "wolnir_bonfire"
+name = "High Lord Wolnir"
+location = "Catacombs of Carthus"
+flag_id = 13800000
+
+[[bonfires]]
+id = "abandoned_tomb"
+name = "Abandoned Tomb"
+location = "Catacombs of Carthus"
+flag_id = 13800001
+
+[[bonfires]]
+id = "old_kings_antechamber"
+name = "Old King's Antechamber"
+location = "Catacombs of Carthus"
+flag_id = 13800002
+
+[[bonfires]]
+id = "demon_ruins_bonfire"
+name = "Demon Ruins"
+location = "Catacombs of Carthus"
+flag_id = 13800003
+
+[[bonfires]]
+id = "old_demon_king_bonfire"
+name = "Old Demon King"
+location = "Catacombs of Carthus"
+flag_id = 13800004
+
+# Irithyll of the Boreal Valley
+[[bonfires]]
+id = "irithyll"
+name = "Irithyll of the Boreal Valley"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700007
+
+[[bonfires]]
+id = "central_irithyll"
+name = "Central Irithyll"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700004
+
+[[bonfires]]
+id = "church_of_yorshka"
+name = "Church of Yorshka"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700000
+
+[[bonfires]]
+id = "distant_manor"
+name = "Distant Manor"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700005
+
+[[bonfires]]
+id = "pontiff_bonfire"
+name = "Pontiff Sulyvahn"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700001
+
+[[bonfires]]
+id = "water_reserve"
+name = "Water Reserve"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700006
+
+[[bonfires]]
+id = "anor_londo"
+name = "Anor Londo"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700003
+
+[[bonfires]]
+id = "prison_tower"
+name = "Prison Tower"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700008
+
+[[bonfires]]
+id = "aldrich_bonfire"
+name = "Aldrich, Devourer of Gods"
+location = "Irithyll of the Boreal Valley"
+flag_id = 13700002
+
+# Irithyll Dungeon
+[[bonfires]]
+id = "irithyll_dungeon"
+name = "Irithyll Dungeon"
+location = "Irithyll Dungeon"
+flag_id = 13900000
+
+[[bonfires]]
+id = "profaned_capital"
+name = "Profaned Capital"
+location = "Irithyll Dungeon"
+flag_id = 13900002
+
+[[bonfires]]
+id = "yhorm_bonfire"
+name = "Yhorm the Giant"
+location = "Irithyll Dungeon"
+flag_id = 13900001
+
+# Lothric Castle
+[[bonfires]]
+id = "lothric_castle"
+name = "Lothric Castle"
+location = "Lothric Castle"
+flag_id = 13010000
+
+[[bonfires]]
+id = "dragon_barracks"
+name = "Dragon Barracks"
+location = "Lothric Castle"
+flag_id = 13010002
+
+[[bonfires]]
+id = "dragonslayer_armour_bonfire"
+name = "Dragonslayer Armour"
+location = "Lothric Castle"
+flag_id = 13010001
+
+[[bonfires]]
+id = "grand_archives"
+name = "Grand Archives"
+location = "Lothric Castle"
+flag_id = 13410001
+
+[[bonfires]]
+id = "twin_princes_bonfire"
+name = "Twin Princes"
+location = "Lothric Castle"
+flag_id = 13410000
+
+# Archdragon Peak
+[[bonfires]]
+id = "archdragon_peak"
+name = "Archdragon Peak"
+location = "Archdragon Peak"
+flag_id = 13200000
+
+[[bonfires]]
+id = "dragon_kin_mausoleum"
+name = "Dragon-Kin Mausoleum"
+location = "Archdragon Peak"
+flag_id = 13200003
+
+[[bonfires]]
+id = "great_belfry"
+name = "Great Belfry"
+location = "Archdragon Peak"
+flag_id = 13200002
+
+[[bonfires]]
+id = "nameless_king_bonfire"
+name = "Nameless King"
+location = "Archdragon Peak"
+flag_id = 13200001
+
+# Kiln of the First Flame
+[[bonfires]]
+id = "flameless_shrine"
+name = "Flameless Shrine"
+location = "Kiln of the First Flame"
+flag_id = 14100000
+
+[[bonfires]]
+id = "kiln"
+name = "Kiln of the First Flame"
+location = "Kiln of the First Flame"
+flag_id = 14100001
+
+# The Painted World of Ariandel (DLC1)
+[[bonfires]]
+id = "snowfield"
+name = "Snowfield"
+location = "The Painted World of Ariandel"
+flag_id = 14500001
+
+[[bonfires]]
+id = "rope_bridge_cave"
+name = "Rope Bridge Cave"
+location = "The Painted World of Ariandel"
+flag_id = 14500002
+
+[[bonfires]]
+id = "corvian_settlement"
+name = "Corvian Settlement"
+location = "The Painted World of Ariandel"
+flag_id = 14500003
+
+[[bonfires]]
+id = "snowy_mountain_pass"
+name = "Snowy Mountain Pass"
+location = "The Painted World of Ariandel"
+flag_id = 14500004
+
+[[bonfires]]
+id = "ariandel_chapel"
+name = "Ariandel Chapel"
+location = "The Painted World of Ariandel"
+flag_id = 14500005
+
+[[bonfires]]
+id = "friede_bonfire"
+name = "Sister Friede"
+location = "The Painted World of Ariandel"
+flag_id = 14500000
+
+[[bonfires]]
+id = "depths_painting"
+name = "Depths of the Painting"
+location = "The Painted World of Ariandel"
+flag_id = 14500007
+
+[[bonfires]]
+id = "gravetender_bonfire"
+name = "Champion's Gravetender"
+location = "The Painted World of Ariandel"
+flag_id = 14500006
+
+# The Dreg Heap (DLC2)
+[[bonfires]]
+id = "dreg_heap"
+name = "The Dreg Heap"
+location = "The Dreg Heap"
+flag_id = 15000001
+
+[[bonfires]]
+id = "earthen_peak_ruins"
+name = "Earthen Peak Ruins"
+location = "The Dreg Heap"
+flag_id = 15000002
+
+[[bonfires]]
+id = "within_earthen_peak"
+name = "Within the Earthen Peak Ruins"
+location = "The Dreg Heap"
+flag_id = 15000003
+
+[[bonfires]]
+id = "demon_prince_bonfire"
+name = "The Demon Prince"
+location = "The Dreg Heap"
+flag_id = 15000000
+
+# The Ringed City (DLC2)
+[[bonfires]]
+id = "mausoleum_lookout"
+name = "Mausoleum Lookout"
+location = "The Ringed City"
+flag_id = 15100002
+
+[[bonfires]]
+id = "ringed_inner_wall"
+name = "Ringed Inner Wall"
+location = "The Ringed City"
+flag_id = 15100003
+
+[[bonfires]]
+id = "ringed_city_streets"
+name = "Ringed City Streets"
+location = "The Ringed City"
+flag_id = 15100004
+
+[[bonfires]]
+id = "shared_grave"
+name = "Shared Grave"
+location = "The Ringed City"
+flag_id = 15100005
+
+[[bonfires]]
+id = "church_filianore"
+name = "Church of Filianore"
+location = "The Ringed City"
+flag_id = 15100000
+
+[[bonfires]]
+id = "midir_bonfire"
+name = "Darkeater Midir"
+location = "The Ringed City"
+flag_id = 15100001
+
+[[bonfires]]
+id = "filianores_rest"
+name = "Filianore's Rest"
+location = "The Ringed City"
+flag_id = 15110001
+
+[[bonfires]]
+id = "gael_bonfire"
+name = "Slave Knight Gael"
+location = "The Ringed City"
+flag_id = 15110000
+
+# =============================================================================
 # PRESETS
 # =============================================================================
 
