@@ -176,12 +176,12 @@ soul_level = 0x68
 # =============================================================================
 
 [[autosplitter.versions]]
-name = "default"
+version = "default"
 description = "Dark Souls III (latest)"
 igt_offset = 0xA4
 
 [[autosplitter.versions]]
-name = "older"
+version = "older"
 description = "Dark Souls III (older versions)"
 igt_offset = 0x9C
 

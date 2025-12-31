@@ -203,13 +203,13 @@ soul_level = 0x28
 # =============================================================================
 
 [[autosplitter.versions]]
-name = "default"
+version = "default"
 description = "Dark Souls Remastered (latest)"
 player_ctrl_offset = 0x68
 current_save_slot_offset = 0xAA0
 
 [[autosplitter.versions]]
-name = "v1.0.1"
+version = "v1.0.1"
 description = "Dark Souls Remastered v1.0.1"
 player_ctrl_offset = 0x48
 current_save_slot_offset = 0xA90
