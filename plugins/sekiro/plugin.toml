@@ -75,9 +75,77 @@ instruction_len = 7
 
 [[autosplitter.patterns]]
 name = "field_area"
-pattern = "48 8b 0d ? ? ? ? 48 85 c9 74 26 44 8b 41 28 48 8d 54 24 40"
+pattern = "48 8B 0D ? ? ? ? 48 85 C9 74 26 44 8B 41 28 48 8D 54 24 40"
 rip_offset = 3
 instruction_len = 7
+pointer_offsets = []  # No dereference - raw address
+
+[[autosplitter.patterns]]
+name = "world_chr_man"
+pattern = "48 8B 35 ? ? ? ? 44 0F 28 18"
+rip_offset = 3
+instruction_len = 7
+pointer_offsets = [0]
+
+[[autosplitter.patterns]]
+name = "igt"
+pattern = "48 8B 05 ? ? ? ? 32 D2 48 8B 48"
+rip_offset = 3
+instruction_len = 7
+pointer_offsets = [0, 0x9C]
+
+[[autosplitter.patterns]]
+name = "fade_man_imp"
+pattern = "48 89 35 ? ? ? ? 48 8B C7 48 8B"
+rip_offset = 3
+instruction_len = 7
+pointer_offsets = [0]
+
+[[autosplitter.patterns]]
+name = "player_game_data"
+pattern = "48 8B 0D ? ? ? ? 48 8B 41 20 C6"
+rip_offset = 3
+instruction_len = 7
+pointer_offsets = [0, 0x8]
+
+# =============================================================================
+# POINTER CHAINS - Derived pointers from base patterns
+# =============================================================================
+
+[autosplitter.pointers]
+# Player position from WorldChrMan
+player_pos = { base = "world_chr_man", offsets = [0, 0x48, 0x28] }
+
+# Fade system from FadeManImp
+fade_system = { base = "fade_man_imp", offsets = [0, 0x8] }
+
+# =============================================================================
+# MEMORY LAYOUT - Offsets for reading values
+# =============================================================================
+
+[autosplitter.memory_layout]
+# Event flag calculation offsets (similar to DS3 but different strides)
+event_flag_base_offset = 0x218
+event_flag_stride = 0x18
+block_stride = 0xB0  # Sekiro-specific
+block_category_stride = 0xA8
+field_area_offset = 0x18  # Sekiro-specific
+
+# Position offsets from PlayerPos
+position_x = 0x80
+position_y = 0x84
+position_z = 0x88
+
+# Player loaded check at WorldChrMan + 0x88
+player_loaded_offset = 0x88
+
+# Blackscreen check at FadeSystem + 0x2DC
+blackscreen_offset = 0x2DC
+
+# Attribute offsets from PlayerGameData
+[autosplitter.memory_layout.attributes]
+vitality = 0x44
+attack_power = 0x48
 
 # =============================================================================
 # LIVESPLIT-STYLE SCRIPT CONFIGURATION
@@ -627,3 +695,610 @@ boss_ids = [
     "gyoubu", "genichiro", "guardian_ape", "folding_monkeys",
     "corrupted_monk_illusion", "great_shinobi_owl", "emma", "isshin_sword"
 ]
+
+# =============================================================================
+# KNOWN FLAGS - Items, NPCs, Prosthetics, Skills
+# =============================================================================
+
+# Key Items
+[[known_flags]]
+id = "item_mortal_blade"
+name = "Mortal Blade"
+category = "key_items"
+flag_id = 50003000
+
+[[known_flags]]
+id = "item_dragons_tears"
+name = "Dragon's Tears"
+category = "key_items"
+flag_id = 50003001
+
+[[known_flags]]
+id = "item_aromatic_branch"
+name = "Aromatic Branch"
+category = "key_items"
+flag_id = 50003002
+
+[[known_flags]]
+id = "item_shelter_stone"
+name = "Shelter Stone"
+category = "key_items"
+flag_id = 50003003
+
+[[known_flags]]
+id = "item_lotus_divine_realm"
+name = "Lotus of the Palace"
+category = "key_items"
+flag_id = 50003004
+
+[[known_flags]]
+id = "item_frozen_tears"
+name = "Frozen Tears"
+category = "key_items"
+flag_id = 50003005
+
+[[known_flags]]
+id = "item_aromatic_flower"
+name = "Aromatic Flower"
+category = "key_items"
+flag_id = 50003006
+
+[[known_flags]]
+id = "item_gracious_gift_tears"
+name = "Gracious Gift of Tears"
+category = "key_items"
+flag_id = 50003007
+
+[[known_flags]]
+id = "item_secret_text"
+name = "Secret Passage Text"
+category = "key_items"
+flag_id = 50003010
+
+[[known_flags]]
+id = "item_young_lords_bell"
+name = "Young Lord's Bell Charm"
+category = "key_items"
+flag_id = 50003011
+
+[[known_flags]]
+id = "item_fathers_bell"
+name = "Father's Bell Charm"
+category = "key_items"
+flag_id = 50003012
+
+[[known_flags]]
+id = "item_gun_fort_shrine_key"
+name = "Gun Fort Shrine Key"
+category = "key_items"
+flag_id = 50003013
+
+[[known_flags]]
+id = "item_gatehouse_key"
+name = "Gatehouse Key"
+category = "key_items"
+flag_id = 50003014
+
+[[known_flags]]
+id = "item_hidden_temple_key"
+name = "Hidden Temple Key"
+category = "key_items"
+flag_id = 50003015
+
+[[known_flags]]
+id = "item_puppeteer_ninjutsu"
+name = "Puppeteer Ninjutsu"
+category = "key_items"
+flag_id = 50003020
+
+[[known_flags]]
+id = "item_bestowal_ninjutsu"
+name = "Bestowal Ninjutsu"
+category = "key_items"
+flag_id = 50003021
+
+[[known_flags]]
+id = "item_bloodsmoke_ninjutsu"
+name = "Bloodsmoke Ninjutsu"
+category = "key_items"
+flag_id = 50003022
+
+# Prosthetic Tools
+[[known_flags]]
+id = "prosthetic_shuriken"
+name = "Prosthetic: Loaded Shuriken"
+category = "prosthetics"
+flag_id = 50004000
+
+[[known_flags]]
+id = "prosthetic_firecracker"
+name = "Prosthetic: Shinobi Firecracker"
+category = "prosthetics"
+flag_id = 50004001
+
+[[known_flags]]
+id = "prosthetic_loaded_axe"
+name = "Prosthetic: Loaded Axe"
+category = "prosthetics"
+flag_id = 50004002
+
+[[known_flags]]
+id = "prosthetic_flame_vent"
+name = "Prosthetic: Flame Vent"
+category = "prosthetics"
+flag_id = 50004003
+
+[[known_flags]]
+id = "prosthetic_loaded_spear"
+name = "Prosthetic: Loaded Spear"
+category = "prosthetics"
+flag_id = 50004004
+
+[[known_flags]]
+id = "prosthetic_mist_raven"
+name = "Prosthetic: Mist Raven"
+category = "prosthetics"
+flag_id = 50004005
+
+[[known_flags]]
+id = "prosthetic_sabimaru"
+name = "Prosthetic: Sabimaru"
+category = "prosthetics"
+flag_id = 50004006
+
+[[known_flags]]
+id = "prosthetic_loaded_umbrella"
+name = "Prosthetic: Loaded Umbrella"
+category = "prosthetics"
+flag_id = 50004007
+
+[[known_flags]]
+id = "prosthetic_divine_abduction"
+name = "Prosthetic: Divine Abduction"
+category = "prosthetics"
+flag_id = 50004008
+
+[[known_flags]]
+id = "prosthetic_finger_whistle"
+name = "Prosthetic: Finger Whistle"
+category = "prosthetics"
+flag_id = 50004009
+
+# Gourd Seeds
+[[known_flags]]
+id = "gourd_seed_1"
+name = "Gourd Seed 1 (Outskirts Wall)"
+category = "gourd_seeds"
+flag_id = 50005000
+
+[[known_flags]]
+id = "gourd_seed_2"
+name = "Gourd Seed 2 (Ashina Castle)"
+category = "gourd_seeds"
+flag_id = 50005001
+
+[[known_flags]]
+id = "gourd_seed_3"
+name = "Gourd Seed 3 (Ashina Castle Antechamber)"
+category = "gourd_seeds"
+flag_id = 50005002
+
+[[known_flags]]
+id = "gourd_seed_4"
+name = "Gourd Seed 4 (Senpou Temple)"
+category = "gourd_seeds"
+flag_id = 50005003
+
+[[known_flags]]
+id = "gourd_seed_5"
+name = "Gourd Seed 5 (Sunken Valley)"
+category = "gourd_seeds"
+flag_id = 50005004
+
+[[known_flags]]
+id = "gourd_seed_6"
+name = "Gourd Seed 6 (Mibu Village)"
+category = "gourd_seeds"
+flag_id = 50005005
+
+[[known_flags]]
+id = "gourd_seed_7"
+name = "Gourd Seed 7 (Fountainhead Palace)"
+category = "gourd_seeds"
+flag_id = 50005006
+
+[[known_flags]]
+id = "gourd_seed_8"
+name = "Gourd Seed 8 (Hirata Estate)"
+category = "gourd_seeds"
+flag_id = 50005007
+
+[[known_flags]]
+id = "gourd_seed_9"
+name = "Gourd Seed 9 (Ashina Depths)"
+category = "gourd_seeds"
+flag_id = 50005008
+
+# Prayer Necklaces (4 Prayer Beads = 1 Necklace)
+[[known_flags]]
+id = "prayer_necklace_1"
+name = "Prayer Necklace 1"
+category = "prayer_necklaces"
+flag_id = 50006000
+
+[[known_flags]]
+id = "prayer_necklace_2"
+name = "Prayer Necklace 2"
+category = "prayer_necklaces"
+flag_id = 50006001
+
+[[known_flags]]
+id = "prayer_necklace_3"
+name = "Prayer Necklace 3"
+category = "prayer_necklaces"
+flag_id = 50006002
+
+[[known_flags]]
+id = "prayer_necklace_4"
+name = "Prayer Necklace 4"
+category = "prayer_necklaces"
+flag_id = 50006003
+
+[[known_flags]]
+id = "prayer_necklace_5"
+name = "Prayer Necklace 5"
+category = "prayer_necklaces"
+flag_id = 50006004
+
+[[known_flags]]
+id = "prayer_necklace_6"
+name = "Prayer Necklace 6"
+category = "prayer_necklaces"
+flag_id = 50006005
+
+[[known_flags]]
+id = "prayer_necklace_7"
+name = "Prayer Necklace 7"
+category = "prayer_necklaces"
+flag_id = 50006006
+
+[[known_flags]]
+id = "prayer_necklace_8"
+name = "Prayer Necklace 8"
+category = "prayer_necklaces"
+flag_id = 50006007
+
+[[known_flags]]
+id = "prayer_necklace_9"
+name = "Prayer Necklace 9"
+category = "prayer_necklaces"
+flag_id = 50006008
+
+[[known_flags]]
+id = "prayer_necklace_10"
+name = "Prayer Necklace 10"
+category = "prayer_necklaces"
+flag_id = 50006009
+
+# Memories (Attack Power)
+[[known_flags]]
+id = "memory_gyoubu"
+name = "Memory: Gyoubu Oniwa"
+category = "memories"
+flag_id = 50007000
+
+[[known_flags]]
+id = "memory_lady_butterfly"
+name = "Memory: Lady Butterfly"
+category = "memories"
+flag_id = 50007001
+
+[[known_flags]]
+id = "memory_genichiro"
+name = "Memory: Genichiro"
+category = "memories"
+flag_id = 50007002
+
+[[known_flags]]
+id = "memory_guardian_ape"
+name = "Memory: Guardian Ape"
+category = "memories"
+flag_id = 50007003
+
+[[known_flags]]
+id = "memory_screen_monkeys"
+name = "Memory: Screen Monkeys"
+category = "memories"
+flag_id = 50007004
+
+[[known_flags]]
+id = "memory_corrupted_monk"
+name = "Memory: Corrupted Monk"
+category = "memories"
+flag_id = 50007005
+
+[[known_flags]]
+id = "memory_headless_ape"
+name = "Memory: Headless Ape"
+category = "memories"
+flag_id = 50007006
+
+[[known_flags]]
+id = "memory_owl"
+name = "Memory: Great Shinobi Owl"
+category = "memories"
+flag_id = 50007007
+
+[[known_flags]]
+id = "memory_true_monk"
+name = "Memory: True Corrupted Monk"
+category = "memories"
+flag_id = 50007008
+
+[[known_flags]]
+id = "memory_divine_dragon"
+name = "Memory: Divine Dragon"
+category = "memories"
+flag_id = 50007009
+
+[[known_flags]]
+id = "memory_sword_saint"
+name = "Memory: Isshin, the Sword Saint"
+category = "memories"
+flag_id = 50007010
+
+[[known_flags]]
+id = "memory_demon_hatred"
+name = "Memory: Demon of Hatred"
+category = "memories"
+flag_id = 50007011
+
+[[known_flags]]
+id = "memory_emma"
+name = "Memory: Emma, the Gentle Blade"
+category = "memories"
+flag_id = 50007012
+
+[[known_flags]]
+id = "memory_isshin_ashina"
+name = "Memory: Isshin Ashina"
+category = "memories"
+flag_id = 50007013
+
+[[known_flags]]
+id = "memory_owl_father"
+name = "Memory: Foster Father"
+category = "memories"
+flag_id = 50007014
+
+# Esoteric Texts (Skill Trees)
+[[known_flags]]
+id = "text_shinobi"
+name = "Esoteric Text: Shinobi Arts"
+category = "esoteric_texts"
+flag_id = 50008000
+
+[[known_flags]]
+id = "text_prosthetic"
+name = "Esoteric Text: Prosthetic Arts"
+category = "esoteric_texts"
+flag_id = 50008001
+
+[[known_flags]]
+id = "text_ashina"
+name = "Esoteric Text: Ashina Arts"
+category = "esoteric_texts"
+flag_id = 50008002
+
+[[known_flags]]
+id = "text_senpou"
+name = "Esoteric Text: Senpou Arts"
+category = "esoteric_texts"
+flag_id = 50008003
+
+[[known_flags]]
+id = "text_mushin"
+name = "Esoteric Text: Mushin Arts"
+category = "esoteric_texts"
+flag_id = 50008004
+
+# Mini-Bosses
+[[known_flags]]
+id = "miniboss_general_naomori"
+name = "General Naomori Kawarada"
+category = "minibosses"
+flag_id = 50009000
+
+[[known_flags]]
+id = "miniboss_shinobi_hunter"
+name = "Shinobi Hunter Enshin of Misen"
+category = "minibosses"
+flag_id = 50009001
+
+[[known_flags]]
+id = "miniboss_juzou"
+name = "Juzou the Drunkard"
+category = "minibosses"
+flag_id = 50009002
+
+[[known_flags]]
+id = "miniboss_general_tenzen"
+name = "General Tenzen Yamauchi"
+category = "minibosses"
+flag_id = 50009003
+
+[[known_flags]]
+id = "miniboss_blazing_bull"
+name = "Blazing Bull"
+category = "minibosses"
+flag_id = 50009004
+
+[[known_flags]]
+id = "miniboss_general_kuranosuke"
+name = "General Kuranosuke Matsumoto"
+category = "minibosses"
+flag_id = 50009005
+
+[[known_flags]]
+id = "miniboss_seven_spears"
+name = "Seven Ashina Spears - Shume Masaji"
+category = "minibosses"
+flag_id = 50009006
+
+[[known_flags]]
+id = "miniboss_lone_shadow_vilehand"
+name = "Lone Shadow Longswordsman"
+category = "minibosses"
+flag_id = 50009007
+
+[[known_flags]]
+id = "miniboss_ashina_elite_jinsuke"
+name = "Ashina Elite - Jinsuke Saze"
+category = "minibosses"
+flag_id = 50009008
+
+[[known_flags]]
+id = "miniboss_armored_warrior"
+name = "Armored Warrior"
+category = "minibosses"
+flag_id = 50009009
+
+[[known_flags]]
+id = "miniboss_long_arm_centipede_sen"
+name = "Long-arm Centipede Sen'un"
+category = "minibosses"
+flag_id = 50009010
+
+[[known_flags]]
+id = "miniboss_snake_eyes_shirafuji"
+name = "Snake Eyes Shirafuji"
+category = "minibosses"
+flag_id = 50009011
+
+[[known_flags]]
+id = "miniboss_long_arm_centipede_giraffe"
+name = "Long-arm Centipede Giraffe"
+category = "minibosses"
+flag_id = 50009012
+
+[[known_flags]]
+id = "miniboss_snake_eyes_shirahagi"
+name = "Snake Eyes Shirahagi"
+category = "minibosses"
+flag_id = 50009013
+
+[[known_flags]]
+id = "miniboss_tokujiro"
+name = "Tokujiro the Glutton"
+category = "minibosses"
+flag_id = 50009014
+
+[[known_flags]]
+id = "miniboss_mist_noble"
+name = "Mist Noble"
+category = "minibosses"
+flag_id = 50009015
+
+[[known_flags]]
+id = "miniboss_orin"
+name = "O'Rin of the Water"
+category = "minibosses"
+flag_id = 50009016
+
+[[known_flags]]
+id = "miniboss_sakura_bull"
+name = "Sakura Bull of the Palace"
+category = "minibosses"
+flag_id = 50009017
+
+[[known_flags]]
+id = "miniboss_okami_leader"
+name = "Okami Leader Shizu"
+category = "minibosses"
+flag_id = 50009018
+
+# NPCs
+[[known_flags]]
+id = "npc_sculptor_talk"
+name = "NPC: Sculptor First Talk"
+category = "npc"
+flag_id = 71000000
+
+[[known_flags]]
+id = "npc_emma_talk"
+name = "NPC: Emma First Talk"
+category = "npc"
+flag_id = 71000100
+
+[[known_flags]]
+id = "npc_kuro_rescue"
+name = "NPC: Kuro Rescued"
+category = "npc"
+flag_id = 71000200
+
+[[known_flags]]
+id = "npc_isshin_talk"
+name = "NPC: Isshin First Talk"
+category = "npc"
+flag_id = 71000300
+
+[[known_flags]]
+id = "npc_tengu_talk"
+name = "NPC: Tengu of Ashina First Talk"
+category = "npc"
+flag_id = 71000400
+
+[[known_flags]]
+id = "npc_blackhat_badger"
+name = "NPC: Blackhat Badger Encounter"
+category = "npc"
+flag_id = 71000500
+
+[[known_flags]]
+id = "npc_kotaro"
+name = "NPC: Kotaro Encounter"
+category = "npc"
+flag_id = 71000600
+
+[[known_flags]]
+id = "npc_anayama"
+name = "NPC: Anayama the Peddler"
+category = "npc"
+flag_id = 71000700
+
+[[known_flags]]
+id = "npc_pot_noble_harunaga"
+name = "NPC: Pot Noble Harunaga"
+category = "npc"
+flag_id = 71000800
+
+[[known_flags]]
+id = "npc_pot_noble_koremori"
+name = "NPC: Pot Noble Koremori"
+category = "npc"
+flag_id = 71000801
+
+# Endings
+[[known_flags]]
+id = "ending_immortal_severance"
+name = "Ending: Immortal Severance"
+category = "endings"
+flag_id = 50010000
+
+[[known_flags]]
+id = "ending_purification"
+name = "Ending: Purification"
+category = "endings"
+flag_id = 50010001
+
+[[known_flags]]
+id = "ending_return"
+name = "Ending: Return"
+category = "endings"
+flag_id = 50010002
+
+[[known_flags]]
+id = "ending_shura"
+name = "Ending: Shura"
+category = "endings"
+flag_id = 50010003
