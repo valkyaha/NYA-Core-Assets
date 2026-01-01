@@ -1,0 +1,16 @@
+{
+  "id": "godrun3",
+  "name": "God Run 3",
+  "description": "DeS + DS1 + DS2 + DS3 + BB + Sekiro + Elden Ring",
+  "version": "1.0.0",
+  "author": "NYA Core",
+  "games": [
+    { "game_id": "des", "preset_id": "any-percent" },
+    { "game_id": "ds1", "preset_id": "any-percent" },
+    { "game_id": "ds2", "preset_id": "any-percent" },
+    { "game_id": "ds3", "preset_id": "any-percent" },
+    { "game_id": "bb", "preset_id": "any-percent" },
+    { "game_id": "sekiro", "preset_id": "any-percent" },
+    { "game_id": "eldenring", "preset_id": "any-percent" }
+  ]
+}

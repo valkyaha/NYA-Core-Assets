@@ -91,6 +91,36 @@
       "path": "languages/lolcat.json"
     }
   ],
+  "multirun_presets": [
+    {
+      "id": "trilogy",
+      "name": "Dark Souls Trilogy",
+      "description": "DS1 + DS2 + DS3 Any%",
+      "version": "1.0.0",
+      "path": "multirun_presets/trilogy.json"
+    },
+    {
+      "id": "godrun1",
+      "name": "God Run 1",
+      "description": "DeS + DS1 + DS2 + DS3 + Bloodborne",
+      "version": "1.0.0",
+      "path": "multirun_presets/godrun1.json"
+    },
+    {
+      "id": "godrun2",
+      "name": "God Run 2",
+      "description": "DeS + DS1 + DS2 + DS3 + BB + Sekiro",
+      "version": "1.0.0",
+      "path": "multirun_presets/godrun2.json"
+    },
+    {
+      "id": "godrun3",
+      "name": "God Run 3",
+      "description": "DeS + DS1 + DS2 + DS3 + BB + Sekiro + Elden Ring",
+      "version": "1.0.0",
+      "path": "multirun_presets/godrun3.json"
+    }
+  ],
   "download": {
     "base_url": "https://raw.githubusercontent.com/valkyaha/NYA-Core-Assets/main/",
     "release_url": "https://github.com/valkyaha/NYA-Core-Assets/releases/latest"
