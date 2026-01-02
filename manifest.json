@@ -97,28 +97,36 @@
       "name": "Dark Souls Trilogy",
       "description": "DS1 + DS2 + DS3 Any%",
       "version": "1.0.0",
-      "path": "multirun_presets/trilogy.json"
+      "path": "multirun_presets/trilogy.json",
+      "games_count": 3,
+      "games_summary": "Dark Souls, Dark Souls II, Dark Souls III"
     },
     {
       "id": "godrun1",
       "name": "God Run 1",
       "description": "DeS + DS1 + DS2 + DS3 + Bloodborne",
       "version": "1.0.0",
-      "path": "multirun_presets/godrun1.json"
+      "path": "multirun_presets/godrun1.json",
+      "games_count": 5,
+      "games_summary": "Demon's Souls, Dark Souls, Dark Souls II, Dark Souls III, Bloodborne"
     },
     {
       "id": "godrun2",
       "name": "God Run 2",
       "description": "DeS + DS1 + DS2 + DS3 + BB + Sekiro",
       "version": "1.0.0",
-      "path": "multirun_presets/godrun2.json"
+      "path": "multirun_presets/godrun2.json",
+      "games_count": 6,
+      "games_summary": "Demon's Souls, Dark Souls, Dark Souls II, Dark Souls III, Bloodborne, Sekiro"
     },
     {
       "id": "godrun3",
       "name": "God Run 3",
       "description": "DeS + DS1 + DS2 + DS3 + BB + Sekiro + Elden Ring",
       "version": "1.0.0",
-      "path": "multirun_presets/godrun3.json"
+      "path": "multirun_presets/godrun3.json",
+      "games_count": 7,
+      "games_summary": "Demon's Souls, Dark Souls, Dark Souls II, Dark Souls III, Bloodborne, Sekiro, Elden Ring"
     }
   ],
   "download": {
