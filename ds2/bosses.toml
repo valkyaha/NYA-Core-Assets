@@ -1,5 +1,7 @@
 # =============================================================================
 # BOSSES - Main Game
+# flag_id values are MEMORY OFFSETS from boss_counters base (not event flags)
+# Based on SoulSplitter by FrankvdStam
 # =============================================================================
 
 [[bosses]]
@@ -8,7 +10,7 @@ name = "The Last Giant"
 location = "Forest of Fallen Giants"
 required = true
 is_dlc = false
-flag_id = 124
+flag_id = 0x0
 order = 1
 
 [[bosses]]
@@ -17,7 +19,7 @@ name = "The Pursuer"
 location = "Forest of Fallen Giants"
 required = true
 is_dlc = false
-flag_id = 112
+flag_id = 0x4
 order = 2
 
 [[bosses]]
@@ -26,7 +28,7 @@ name = "Dragonrider"
 location = "Heide's Tower of Flame"
 required = true
 is_dlc = false
-flag_id = 76
+flag_id = 0x20
 order = 3
 
 [[bosses]]
@@ -35,7 +37,7 @@ name = "Old Dragonslayer"
 location = "Cathedral of Blue"
 required = false
 is_dlc = false
-flag_id = 80
+flag_id = 0x24
 order = 4
 
 [[bosses]]
@@ -44,7 +46,7 @@ name = "Flexile Sentry"
 location = "No-man's Wharf"
 required = true
 is_dlc = false
-flag_id = 84
+flag_id = 0x28
 order = 5
 
 [[bosses]]
@@ -53,7 +55,7 @@ name = "Ruin Sentinels"
 location = "Lost Bastille"
 required = true
 is_dlc = false
-flag_id = 88
+flag_id = 0x2C
 order = 6
 
 [[bosses]]
@@ -62,7 +64,7 @@ name = "The Lost Sinner"
 location = "Sinner's Rise"
 required = true
 is_dlc = false
-flag_id = 92
+flag_id = 0x18
 order = 7
 
 [[bosses]]
@@ -71,7 +73,7 @@ name = "Belfry Gargoyles"
 location = "Belfry Luna"
 required = false
 is_dlc = false
-flag_id = 168
+flag_id = 0x30
 order = 8
 
 [[bosses]]
@@ -80,7 +82,7 @@ name = "Skeleton Lords"
 location = "Huntsman's Copse"
 required = true
 is_dlc = false
-flag_id = 56
+flag_id = 0x44
 order = 9
 
 [[bosses]]
@@ -89,7 +91,7 @@ name = "Executioner's Chariot"
 location = "Undead Purgatory"
 required = false
 is_dlc = false
-flag_id = 52
+flag_id = 0x48
 order = 10
 
 [[bosses]]
@@ -98,7 +100,7 @@ name = "Covetous Demon"
 location = "Earthen Peak"
 required = true
 is_dlc = false
-flag_id = 60
+flag_id = 0x58
 order = 11
 
 [[bosses]]
@@ -107,7 +109,7 @@ name = "Mytha, the Baneful Queen"
 location = "Earthen Peak"
 required = true
 is_dlc = false
-flag_id = 64
+flag_id = 0x54
 order = 12
 
 [[bosses]]
@@ -116,7 +118,7 @@ name = "Smelter Demon"
 location = "Iron Keep"
 required = false
 is_dlc = false
-flag_id = 96
+flag_id = 0x50
 order = 13
 
 [[bosses]]
@@ -125,7 +127,7 @@ name = "Old Iron King"
 location = "Iron Keep"
 required = true
 is_dlc = false
-flag_id = 48
+flag_id = 0x1C
 order = 14
 
 [[bosses]]
@@ -134,7 +136,7 @@ name = "Scorpioness Najka"
 location = "Shaded Woods"
 required = true
 is_dlc = false
-flag_id = 68
+flag_id = 0x3C
 order = 15
 
 [[bosses]]
@@ -143,7 +145,7 @@ name = "Royal Rat Authority"
 location = "Doors of Pharros"
 required = false
 is_dlc = false
-flag_id = 108
+flag_id = 0x40
 order = 16
 
 [[bosses]]
@@ -152,7 +154,7 @@ name = "Prowling Magus"
 location = "Brightstone Cove"
 required = true
 is_dlc = false
-flag_id = 164
+flag_id = 0x38
 order = 17
 
 [[bosses]]
@@ -161,7 +163,7 @@ name = "The Duke's Dear Freja"
 location = "Brightstone Cove"
 required = true
 is_dlc = false
-flag_id = 44
+flag_id = 0x14
 order = 18
 
 [[bosses]]
@@ -170,7 +172,7 @@ name = "Royal Rat Vanguard"
 location = "Grave of Saints"
 required = false
 is_dlc = false
-flag_id = 100
+flag_id = 0x34
 order = 19
 
 [[bosses]]
@@ -179,7 +181,7 @@ name = "The Rotten"
 location = "Black Gulch"
 required = true
 is_dlc = false
-flag_id = 104
+flag_id = 0x4C
 order = 20
 
 [[bosses]]
@@ -188,7 +190,7 @@ name = "Twin Dragonriders"
 location = "Drangleic Castle"
 required = true
 is_dlc = false
-flag_id = 160
+flag_id = 0x8
 order = 21
 
 [[bosses]]
@@ -197,7 +199,7 @@ name = "Looking Glass Knight"
 location = "King's Passage"
 required = true
 is_dlc = false
-flag_id = 72
+flag_id = 0x5C
 order = 22
 
 [[bosses]]
@@ -206,7 +208,7 @@ name = "Demon of Song"
 location = "Shrine of Amana"
 required = true
 is_dlc = false
-flag_id = 40
+flag_id = 0x64
 order = 23
 
 [[bosses]]
@@ -215,7 +217,7 @@ name = "Velstadt, the Royal Aegis"
 location = "Undead Crypt"
 required = true
 is_dlc = false
-flag_id = 140
+flag_id = 0x78
 order = 24
 
 [[bosses]]
@@ -224,7 +226,7 @@ name = "Vendrick"
 location = "Undead Crypt"
 required = false
 is_dlc = false
-flag_id = 152
+flag_id = 0x74
 order = 25
 
 [[bosses]]
@@ -233,7 +235,7 @@ name = "Guardian Dragon"
 location = "Aldia's Keep"
 required = true
 is_dlc = false
-flag_id = 120
+flag_id = 0x6C
 order = 26
 
 [[bosses]]
@@ -242,7 +244,7 @@ name = "Ancient Dragon"
 location = "Dragon Shrine"
 required = false
 is_dlc = false
-flag_id = 148
+flag_id = 0x60
 order = 27
 
 [[bosses]]
@@ -251,7 +253,7 @@ name = "Giant Lord"
 location = "Memory of Jeigh"
 required = true
 is_dlc = false
-flag_id = 128
+flag_id = 0x68
 order = 28
 
 [[bosses]]
@@ -260,7 +262,7 @@ name = "Throne Watcher & Defender"
 location = "Throne of Want"
 required = true
 is_dlc = false
-flag_id = 136
+flag_id = 0x70
 order = 29
 
 [[bosses]]
@@ -269,7 +271,7 @@ name = "Nashandra"
 location = "Throne of Want"
 required = true
 is_dlc = false
-flag_id = 132
+flag_id = 0xC
 order = 30
 
 [[bosses]]
@@ -278,7 +280,7 @@ name = "Aldia, Scholar of the First Sin"
 location = "Throne of Want"
 required = false
 is_dlc = false
-flag_id = 280
+flag_id = 0x10
 order = 31
 
 [[bosses]]
@@ -287,7 +289,7 @@ name = "Darklurker"
 location = "Dark Chasm of Old"
 required = false
 is_dlc = false
-flag_id = 156
+flag_id = 0x70
 order = 32
 
 # =============================================================================
@@ -301,7 +303,7 @@ location = "Dragon's Sanctum"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Sunken King"
-flag_id = 200
+flag_id = 0x80
 order = 33
 
 [[bosses]]
@@ -311,7 +313,7 @@ location = "Dragon's Sanctum"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Sunken King"
-flag_id = 212
+flag_id = 0x84
 order = 34
 
 [[bosses]]
@@ -321,7 +323,7 @@ location = "Cave of the Dead"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Sunken King"
-flag_id = 244
+flag_id = 0x88
 order = 35
 
 # =============================================================================
@@ -335,7 +337,7 @@ location = "Iron Passage"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Old Iron King"
-flag_id = 252
+flag_id = 0x90
 order = 36
 
 [[bosses]]
@@ -345,7 +347,7 @@ location = "Brume Tower"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Old Iron King"
-flag_id = 204
+flag_id = 0x7C
 order = 37
 
 [[bosses]]
@@ -355,7 +357,7 @@ location = "Memory of the Old Iron King"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Old Iron King"
-flag_id = 248
+flag_id = 0x8C
 order = 38
 
 # =============================================================================
@@ -369,7 +371,7 @@ location = "Frozen Eleum Loyce"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Ivory King"
-flag_id = 208
+flag_id = 0x94
 order = 39
 
 [[bosses]]
@@ -379,7 +381,7 @@ location = "Old Chaos"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Ivory King"
-flag_id = 260
+flag_id = 0x9C
 order = 40
 
 [[bosses]]
@@ -389,5 +391,5 @@ location = "Frigid Outskirts"
 required = true
 is_dlc = true
 dlc_name = "Crown of the Ivory King"
-flag_id = 264
+flag_id = 0xA0
 order = 41
