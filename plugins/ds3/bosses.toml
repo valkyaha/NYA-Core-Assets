@@ -182,6 +182,20 @@ flag_id = 13200850
 order = 18
 aliases = ["NK", "Nameless"]
 
+[[bosses.videos]]
+url = "https://youtu.be/GGXHy6BlN6o"
+title = "Nameless King - Bow + Heavy Weapon Strategy (No Healing)"
+author = "Fextralife"
+tags = ["guide", "ranged"]
+language = "en"
+
+[[bosses.videos]]
+url = "https://youtu.be/arV2BaHB-eY?t=28m11s"
+title = "Nameless King - Melee Co-Op Strategy"
+author = "Fextralife"
+tags = ["guide", "melee"]
+language = "en"
+
 [[bosses]]
 id = "soul_of_cinder"
 name = "Soul of Cinder"
@@ -217,6 +231,13 @@ dlc_name = "Ashes of Ariandel"
 flag_id = 14500800
 order = 21
 aliases = ["Friede", "Blackflame Friede"]
+
+[[bosses.videos]]
+url = "https://youtu.be/uXJ89PYbJZQ"
+title = "Eight Ways to Backstab Friede - SL66 NG+2"
+author = "Fextralife"
+tags = ["guide", "advanced", "melee"]
+language = "en"
 
 # =============================================================================
 # THE RINGED CITY DLC
