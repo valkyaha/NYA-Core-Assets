@@ -1,0 +1,47 @@
+[autosplitter]
+enabled = true
+algorithm = "kill_counter"
+
+# Kill counter algorithm configuration (DS2 style)
+# Based on SoulSplitter by FrankvdStam
+[autosplitter.kill_counter_config]
+primary_pattern = "game_manager_imp"
+chain_offsets = [0x70, 0x28, 0x20, 0x8]
+
+[[autosplitter.patterns]]
+name = "game_manager_imp"
+pattern = "48 8B 35 ? ? ? ? 48 8B E9 48 85 F6"
+rip_offset = 3
+instruction_len = 7
+pointer_offsets = [0]
+
+[[autosplitter.patterns]]
+name = "load_state"
+pattern = "48 89 05 ? ? ? ? B0 01 48 83 C4 28"
+rip_offset = 3
+instruction_len = 7
+pointer_offsets = []
+
+[autosplitter.pointers]
+boss_counters = { base = "game_manager_imp", offsets = [0, 0x70, 0x28, 0x20, 0x8] }
+event_flag_manager = { base = "game_manager_imp", offsets = [0, 0x70, 0x20] }
+position = { base = "game_manager_imp", offsets = [0, 0xD0, 0x100] }
+attributes = { base = "game_manager_imp", offsets = [0, 0xD0, 0x490] }
+
+[autosplitter.memory_layout]
+loading_offset = 0x11C
+position_x = 0x88
+position_y = 0x80
+position_z = 0x84
+soul_level_offset = 0xD0
+
+[autosplitter.memory_layout.attributes]
+vigor = 0x0
+endurance = 0x2
+vitality = 0x4
+attunement = 0x6
+strength = 0x8
+dexterity = 0xA
+adaptability = 0xC
+intelligence = 0xE
+faith = 0x10
